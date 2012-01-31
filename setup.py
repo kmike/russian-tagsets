@@ -15,7 +15,7 @@ setup(
     url = 'https://bitbucket.org/kmike/russian-tagsets/',
     download_url = 'https://bitbucket.org/kmike/russian-tagsets/get/v%s.zip' % __version__,
 
-    packages = ['russian_tagsets'],
+    packages = ['russian_tagsets', 'russian_tagsets.positional'],
 
     classifiers=[
           'Development Status :: 1 - Planning',
