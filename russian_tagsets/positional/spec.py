@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+
+# THIS IS UNUSED AND DOESN'T WORK
+
 from fnmatch import fnmatchcase
 
 _RESTRICTIONS = [

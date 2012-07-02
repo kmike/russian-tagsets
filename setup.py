@@ -13,7 +13,7 @@ setup(
     author_email='kmike84@gmail.com',
 
     url = 'https://bitbucket.org/kmike/russian-tagsets/',
-    download_url = 'https://bitbucket.org/kmike/russian-tagsets/get/v%s.zip' % __version__,
+    test_requires = ['pytest'],
 
     packages = ['russian_tagsets', 'russian_tagsets.positional'],
 
@@ -27,6 +27,8 @@ setup(
           'Programming Language :: Python :: 2',
           'Programming Language :: Python :: 2.6',
           'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.2',
           'Topic :: Software Development :: Libraries :: Python Modules',
           'Topic :: Scientific/Engineering :: Information Analysis',
           'Topic :: Text Processing :: Linguistic',
