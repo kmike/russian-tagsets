@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Conversion from aot.ru tags to positional tags.
-AOT tags should be tuple(POS, gram_info), e.g.::
-
-    (u'П', u'мр,ед,им,од,но')
-
-POS->AOT conversion is lossy.
 """
 
 from __future__ import absolute_import, unicode_literals
@@ -13,17 +8,23 @@ from russian_tagsets import converters
 from russian_tagsets import positional
 
 def to_positional(aot_tag):
-    pos, info = aot_tag
-    info = set(info.split(','))
+    if ',' in aot_tag:
+        pos, info = aot_tag.split(',', 1)
+        info = set(info.split(','))
+    else:
+        pos = aot_tag
+        info = set()
+
     tag = positional.Tag()
 
-    # ==== POS tag ====
+    # ==== 1,2: POS tag ====
     if pos == 'С':
         tag.POS = 'NN'
 
     elif pos == 'П':
         tag.POS = 'AA'
         # lossy: possessive adjective (мамин, овечью) should be AU
+        # some comparative adjectives should be adverbs
 
     elif pos == 'Г':
         tag.POS = 'VB'
@@ -72,6 +73,11 @@ def to_positional(aot_tag):
         # and degrees of comparison (vverxu, vnizu, potom)
         tag.POS = 'Db'
 
+#        if 'указат' in info or 'вопр' in info:
+#            tag.POS = 'Db'
+#        else:
+#            tag.POS = 'Dg'
+
         # fixme: adverb forming negation and degrees of
         # comparison (vysoko, daleko). Idea: pymorphy.get_graminfo
         # returns 'КР_ПРИЛ' and 'Н' variants for such adverbs.
@@ -119,7 +125,11 @@ def to_positional(aot_tag):
         # e.g. конечно
         tag.POS = 'Db' # ?
 
-    # ==== gender ====
+    elif pos == 'ФРАЗ':
+        # e.g. несмотря
+        tag.POS = 'RF'
+
+    # ==== 3: gender ====
 
     if 'мр' in info:
         tag.gender = 'M'
@@ -130,7 +140,7 @@ def to_positional(aot_tag):
     elif 'мр-жр' in info:
         tag.gender = 'X' # fixme?
 
-    # ==== animacy ====
+    # ==== 4: animacy ====
     # FIXME
     # X should be used: except for nouns, in all
     # forms except accusative masculine singular and accusative
@@ -144,7 +154,7 @@ def to_positional(aot_tag):
     else:
         tag.animacy = '-' # fixme?
 
-    # ======== number =======
+    # ======== 5: number =======
     if 'ед' in info:
         tag.number = 'S'
     elif 'мн' in info:
@@ -154,7 +164,7 @@ def to_positional(aot_tag):
     # 3rd person possessive pronouns:
     # tag.number = 'X'
 
-    # ======== case ==========
+    # ======== 6: case ==========
     CASES = {
         'им': '1',
         'рд': '2',
@@ -172,10 +182,10 @@ def to_positional(aot_tag):
         tag.case = '1'
         tag.variant = '1'
 
-    # TODO: possessor's gender
-    # TODO: possessor's number
+    # TODO: 7: possessor's gender
+    # TODO: 8: possessor's number
 
-    # ======= person ========
+    # ======= 9: person ========
     # fixme: it should be X for non-declinable verbs
     PERSONS = {'1л': '1', '2л': '2', '3л': '3'}
     for person in PERSONS:
@@ -183,25 +193,38 @@ def to_positional(aot_tag):
             tag.person = PERSONS[person]
             break
 
-    # ======= reflexivity ========
+    # ======= 10: reflexivity ========
     if tag.POS in ['AG', 'PP', 'P5', 'PS'] or tag.mainPOS == 'V':
         tag.reflexivity = 'I'
         # fixme: lossy! e.g. for "получиться" it should be 'R'.
 
-    # ======= tense =========
-    TENSES = {
-        'нст': 'P',
-        'прш': 'R',
-        'буд': 'F',
-    }
-    for tense in TENSES:
-        if tense in info:
-            tag.tense = TENSES[tense]
-            break
+    # ========= 15: voice ===========
+    # XXX: this is out of order because tense needs it
+    if tag.POS in ['AG', 'Ac']: # ??
+        if 'дст' in info:
+            tag.voice = 'A'
+        elif 'стр' in info:
+            tag.voice = 'P'
 
-    # TODO: verbal_aspect
+    # ======= 11: tense =========
+    if tag.POS in ['AG', 'VB', 'Vp']: # ?
+        TENSES = {
+            'нст': 'P',
+            'прш': 'R',
+            'буд': 'F',
+        }
+        for tense in TENSES:
+            if tense in info:
+                tag.tense = TENSES[tense]
+                break
+        # passive long participles
+        if tag.POS == 'AG' and tag.tense == '-' and tag.voice == 'P':
+            tag.tense = 'X'
 
-    # ========== degree of comparison =========
+
+    # TODO: 12: verbal_aspect
+
+    # ========== 13: degree of comparison =========
     if tag.POS in ['AA', 'Dg']:
         if 'сравн' in info:
             tag.degree_of_comparison = '2'
@@ -210,11 +233,10 @@ def to_positional(aot_tag):
         else:
             tag.degree_of_comparison = '1'
 
-    # ========= negation =========
+    # ========= 14: negation =========
     if tag.mainPOS in ['N', 'A'] or tag.POS == 'Dg':
         tag.negation = 'A'
-        # fixme: lossy! e.g. for ""
-
+        # fixme: lossy!
 
     return tag
 
