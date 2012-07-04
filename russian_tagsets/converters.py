@@ -32,4 +32,3 @@ def convert(obj, type_from, type_to):
     for func in steps(type_from, type_to):
         obj = func(obj)
     return obj
-

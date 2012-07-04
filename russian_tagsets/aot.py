@@ -5,6 +5,7 @@ Conversion from aot.ru tags to positional tags.
 from __future__ import absolute_import, unicode_literals
 from russian_tagsets import converters
 from russian_tagsets import positional
+from russian_tagsets.utils import invert_mapping
 
 def split_tag_raw(aot_tag):
     if ',' in aot_tag:
@@ -18,9 +19,6 @@ def split_tag(aot_tag):
         return pos, set(info.split(','))
     else:
         return pos, set()
-
-def _invert_mapping(dct):
-    return dict([v,k] for k,v in dct.items())
 
 _POS_MAP = {
     'N': 'С',
@@ -60,7 +58,7 @@ TENSES = {
     'прш': 'R',
     'буд': 'F',
 }
-TENSES_INV = _invert_mapping(TENSES)
+TENSES_INV = invert_mapping(TENSES)
 
 CASES = {
     'им': '1',
@@ -70,17 +68,17 @@ CASES = {
     'тв': '7',
     'пр': '6',
 }
-CASES_INV = _invert_mapping(CASES)
+CASES_INV = invert_mapping(CASES)
 
 GENDERS = {
     'мр': 'M',
     'жр': 'F',
     'ср': 'N',
 }
-GENDERS_INV = _invert_mapping(GENDERS)
+GENDERS_INV = invert_mapping(GENDERS)
 
 PERSONS = {'1л': '1', '2л': '2', '3л': '3'}
-PERSONS_INV = _invert_mapping(PERSONS)
+PERSONS_INV = invert_mapping(PERSONS)
 
 
 def to_positional(aot_tag):
