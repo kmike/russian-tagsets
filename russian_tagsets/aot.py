@@ -53,6 +53,22 @@ def to_positional(aot_tag):
         # Personal pronoun (ja, my, ty, vy, on, ona, ono, oni, sebja)
         tag.POS = 'PP'
 
+        # fixme
+        # 3rd person pronoun in prepositional forms (nego, nej, ...)
+        # tag.POS = 'P5'
+
+        # Relative/interrogative pronoun with nominal declension (kto, čto)
+        # tag.POS = 'PQ'
+
+        # Negative pronoun with nominal declension (nicto, nikto)
+        # tag.POS = 'PW'
+
+        # Indefinite pronoun with nominal declension (kto-to, kto-nibud', cto-to, ...)
+        # tag.POS = 'PZ'
+
+        # Pronoun demonstrative (ètot, tot, sej, takoj, èkij, ... )
+        # tag.POS = 'PD'
+
     elif pos == 'МС-ПРЕДК':
         # e.g. нечего
         tag.POS = 'Db' # lossy
@@ -67,6 +83,12 @@ def to_positional(aot_tag):
         # fixme/hack: Possessive pronoun (moj, ego, svoj, ..)
         if 'од' in info:
             tag.POS = 'PS'
+
+        # fixme: Negative pronoun with adjectival declension (nikakoj, nicej)
+        # tag.POS = 'Pw'
+
+        # fixme: Indefinite pronoun with adjectival declension (samyj, ves', ...)
+        # tag.POS = 'Pz'
 
     elif pos == 'Н':
         # Adverb without a possibility to form negation
@@ -95,6 +117,15 @@ def to_positional(aot_tag):
 
         # fixme: Generic/collective numeral (dvoje, četvero)
         # tag.POS = 'Cj'
+
+        # Indefinite numeral (mnogo, neskol'ko)
+        # tag.POS = 'Ca'
+
+        # Interrogative numeral (skol'ko)
+        # tag.POS = 'Cu'
+
+        # Multiplicative numeral (dvaždy, triždy)
+        # tag.POS = 'Cv'
 
     elif pos == 'ЧИСЛ-П':
         tag.POS = 'Cr'

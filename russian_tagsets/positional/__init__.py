@@ -223,6 +223,9 @@ class Tag(object):
     def __str__(self):
         return self._data.tounicode() # this is not correct under python 2.x
 
+    def __repr__(self):
+        return 'Tag("%s")' % self
+
 
 if __name__ == '__main__':
     print(Tag("NNFIS7-------A--").verbose_info())
