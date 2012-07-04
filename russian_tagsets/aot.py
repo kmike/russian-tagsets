@@ -207,9 +207,6 @@ def to_positional(aot_tag):
         # Nonvocalized preposition (ob, pered, s, v, ...)
         tag.POS = 'RR'
 
-        # fixme: Part of a preposition; never appears isolated (nesmotrja)
-        # tag.POS = 'PF'
-
         # fixme: Vocalized preposition (obo, peredo, so, vo, ...)
         # tag.POS = 'RV'
 
@@ -367,7 +364,14 @@ def from_positional(positional_tag):
 
     # ====== 6. case =========
     if tag.case in CASES_INV:
-        info.add(CASES_INV[tag.case])
+        if tag.variant == '1':
+            if tag.case == '1':
+                info.add('зв')
+            else:
+                info.add(CASES_INV[tag.case])
+                info.add('2')
+        else:
+            info.add(CASES_INV[tag.case])
 
     # 7. posessor's gender
     # 8. posessor's number
