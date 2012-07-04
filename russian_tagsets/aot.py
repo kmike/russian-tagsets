@@ -1,7 +1,38 @@
 # -*- coding: utf-8 -*-
 """
-Conversion from aot.ru tags to positional tags.
+Conversion between aot.ru/pymorphy and positional
+(http://ufal.mff.cuni.cz/~hana/morph/rutags.html) tags.
+
+Both "aot -> positional" and "positional -> aot" conversions discards
+some information because of tagset differences.
+
+AOT tags are generally less detailed than positional tags so
+"aot -> positional" conversion is about safe and
+"positional -> aot" conversion is more lossy.
+
+"aot -> positional" issues
+--------------------------
+
+* безл, указ, вопр, 0, разг, арх, мр-жр, аббр, имя, отч tags
+  are currently discarded;
+* МС-ПРЕДК, ПРЕДК tags will be lost in "aot -> positional -> aot" conversion
+ (they all will become Н);
+* animacy is sometimes discarded.
+
+"positional -> aot issues"
+--------------------------
+
+* posessor's gender, posessor's number, reflexivity, verbal aspect and negation
+  are all discarded because they don't have counterparts in aot tagset;
+* pronounce, numeral, conjunction, preposition and
+  participle classification is much simpler in aot;
+* punctuation is not supported;
+* possession information for adjectives is discarded;
+* adverb classification criteria is different in aot;
+* 'X' ("any number") number is not supported.
+
 """
+
 from __future__ import absolute_import, unicode_literals
 from russian_tagsets import converters
 from russian_tagsets import positional

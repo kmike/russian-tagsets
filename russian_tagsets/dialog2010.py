@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Conversion from Dialog-2010 (http://ru-eval.ru/) tags to aot.ru tags.
+Conversion between Dialog-2010 (http://ru-eval.ru/) and aot.ru tags.
+
+Dialog-2010 tags are less detailed than aot tags so aot -> dialog2010
+conversion discards information.
 """
 from __future__ import absolute_import, unicode_literals
 import itertools
