@@ -13,17 +13,16 @@ AOT tags are generally less detailed than positional tags so
 "aot -> positional" issues
 --------------------------
 
-* безл, указ, вопр, 0, разг, арх, мр-жр, аббр, имя, отч tags
-  are currently discarded;
-* МС-ПРЕДК, ПРЕДК tags will be lost in "aot -> positional -> aot" conversion
- (they all will become Н);
+* "безл", "указат", "вопр", "мр-жр", "имя", "отч" tags are discarded;
+* "МС-ПРЕДК", "ПРЕДК" tags are lost in "aot -> positional -> aot"
+  conversion (they become "Н");
 * animacy is sometimes discarded.
 
 "positional -> aot issues"
 --------------------------
 
-* possessor's gender, possessor's number, reflexivity, verbal aspect and negation
-  are all discarded because they don't have counterparts in aot tagset;
+* possessor's gender, possessor's number, reflexivity, verbal aspect and
+  negation are discarded because they don't have counterparts in aot tagset;
 * pronounce, numeral, conjunction, preposition and
   participle classification is much simpler in aot;
 * punctuation is not supported;
@@ -306,6 +305,10 @@ def to_positional(aot_tag):
         tag.case = '1'
         tag.variant = '1'
 
+    if '0' in info:
+        tag.case = 'X'
+        tag.number = 'X'
+
     # TODO: 7: possessor's gender
     # TODO: 8: possessor's number
 
@@ -355,6 +358,14 @@ def to_positional(aot_tag):
     if tag.mainPOS in ['N', 'A'] or tag.POS == 'Dg':
         tag.negation = 'A'
         # fixme: lossy!
+
+    # ======== 16: variant ===========
+    if 'арх' in info:
+        tag.variant = '2'
+    elif 'разг' in info:
+        tag.variant = '5'
+    elif 'аббр' in info:
+        tag.variant = '8'
 
     return tag
 
@@ -408,6 +419,9 @@ def from_positional(positional_tag):
         else:
             info.add(CASES_INV[tag.case])
 
+    if tag.case == 'X' and tag.number == 'X':
+        info.add('0')
+
     # 7. possessor's gender
     # 8. possessor's number
 
@@ -440,6 +454,14 @@ def from_positional(positional_tag):
         info.add('стр')
     elif tag.mainPOS == 'V' and tag.tense != 'F': # hack?
         info.add('дст')
+
+    # ====== 16. variant ========
+    if tag.variant in ['2', '3']:
+        info.add('арх')
+    elif tag.variant in ['5', '6', '7']:
+        info.add('разг')
+    elif tag.variant == '8':
+        info.add('аббр')
 
 
     return ",".join([pos] + list(info))

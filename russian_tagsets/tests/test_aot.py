@@ -79,6 +79,9 @@ class TestConversion(object):
 
         # nouns
         ['голос',       'NNMIS4-------A--', 'С,мр,ед,вн'], # online example tag was incorrect
+        ['глас',        'NNMIS4-------A-2', 'С,мр,ед,вн,арх'],
+        ['НАТО',        'NNFIXX-------A-8', 'С,жр,аббр,0'],
+        ['понт',        'NNMIS1-------A-5', 'С,мр,ед,им,разг'],
         ['берегу',      'NNMIS6-------A-1', 'С,мр,ед,пр,2'],
 
         # adjectives
