@@ -3,7 +3,7 @@
 Conversion between aot.ru/pymorphy and positional
 (http://ufal.mff.cuni.cz/~hana/morph/rutags.html) tags.
 
-Both "aot -> positional" and "positional -> aot" conversions discards
+Both "aot -> positional" and "positional -> aot" conversions discard
 some information because of tagset differences.
 
 AOT tags are generally less detailed than positional tags so
@@ -22,7 +22,7 @@ AOT tags are generally less detailed than positional tags so
 "positional -> aot issues"
 --------------------------
 
-* posessor's gender, posessor's number, reflexivity, verbal aspect and negation
+* possessor's gender, possessor's number, reflexivity, verbal aspect and negation
   are all discarded because they don't have counterparts in aot tagset;
 * pronounce, numeral, conjunction, preposition and
   participle classification is much simpler in aot;
@@ -408,8 +408,8 @@ def from_positional(positional_tag):
         else:
             info.add(CASES_INV[tag.case])
 
-    # 7. posessor's gender
-    # 8. posessor's number
+    # 7. possessor's gender
+    # 8. possessor's number
 
     # ====== 9. person ========
     if tag.person in PERSONS_INV:
