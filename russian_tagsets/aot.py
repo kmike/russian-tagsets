@@ -2,19 +2,22 @@
 """
 Conversion from aot.ru tags to positional tags.
 """
-
 from __future__ import absolute_import, unicode_literals
 from russian_tagsets import converters
 from russian_tagsets import positional
 
-def _split_tag(aot_tag):
+def split_tag_raw(aot_tag):
     if ',' in aot_tag:
-        pos, info = aot_tag.split(',', 1)
-        info = set(info.split(','))
+        return aot_tag.split(',', 1)
     else:
-        pos = aot_tag
-        info = set()
-    return pos, info
+        return aot_tag, ''
+
+def split_tag(aot_tag):
+    pos, info = split_tag_raw(aot_tag)
+    if info:
+        return pos, set(info.split(','))
+    else:
+        return pos, set()
 
 def _invert_mapping(dct):
     return dict([v,k] for k,v in dct.items())
@@ -86,7 +89,7 @@ def to_positional(aot_tag):
     This is lossy because of format differences.
     """
 
-    pos, info = _split_tag(aot_tag)
+    pos, info = split_tag(aot_tag)
 
     tag = positional.Tag()
 

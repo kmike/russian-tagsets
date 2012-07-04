@@ -49,7 +49,7 @@ def _remove_unsupported_pos(tag):
     return str(tag)
 
 def _remove_unsupported_aot(tag):
-    pos, info = aot._split_tag(tag)
+    pos, info = aot.split_tag(tag)
     info.discard('од')
     info.discard('но')
     info.discard('указат')
@@ -68,7 +68,7 @@ def _remove_unsupported_aot(tag):
 
 class TestConversion(object):
 
-    TAGS = [ # word, positional tag, pymorphy tag
+    TAGS = [ # word, positional tag, pymorphy/aot tag
         # example sentence
         ['он',          'PPM-S1--3I------', 'МС,3л,мр,ед,им'],
         ['купил',       'VBM-S----IR-----', 'Г,дст,прш,мр,ед'],
