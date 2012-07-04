@@ -7,13 +7,86 @@ from __future__ import absolute_import, unicode_literals
 from russian_tagsets import converters
 from russian_tagsets import positional
 
-def to_positional(aot_tag):
+def _split_tag(aot_tag):
     if ',' in aot_tag:
         pos, info = aot_tag.split(',', 1)
         info = set(info.split(','))
     else:
         pos = aot_tag
         info = set()
+    return pos, info
+
+def _invert_mapping(dct):
+    return dict([v,k] for k,v in dct.items())
+
+_POS_MAP = {
+    'N': 'С',
+
+    'A': 'П',
+    'AG': 'ПРИЧАСТИЕ',
+    'Ac': 'КР_ПРИЧАСТИЕ',
+    'AC': 'КР_ПРИЛ',
+
+    'P': 'МС',
+    'Pq': 'МС-П',
+    'PS': 'МС-П',
+    'Pw': 'МС-П',
+    'Pz': 'МС-П',
+
+    'C': 'ЧИСЛ',
+    'Cr': 'ЧИСЛ-П',
+
+    'V': 'Г',
+    'VB': 'Г',
+    'Vi': 'Г,пвл',
+    'Ve': 'ДЕЕПРИЧАСТИЕ',
+    'Vf': 'ИНФИНИТИВ',
+
+    'D': 'Н',
+
+    'R': 'ПРЕДЛ',
+    'RF': 'ФРАЗ',
+    'J': 'СОЮЗ',
+    'I': 'МЕЖД',
+    'T': 'ЧАСТ',
+    'Z': 'ЗНАК', # non-standard
+}
+
+TENSES = {
+    'нст': 'P',
+    'прш': 'R',
+    'буд': 'F',
+}
+TENSES_INV = _invert_mapping(TENSES)
+
+CASES = {
+    'им': '1',
+    'рд': '2',
+    'дт': '3',
+    'вн': '4',
+    'тв': '7',
+    'пр': '6',
+}
+CASES_INV = _invert_mapping(CASES)
+
+GENDERS = {
+    'мр': 'M',
+    'жр': 'F',
+    'ср': 'N',
+}
+GENDERS_INV = _invert_mapping(GENDERS)
+
+PERSONS = {'1л': '1', '2л': '2', '3л': '3'}
+PERSONS_INV = _invert_mapping(PERSONS)
+
+
+def to_positional(aot_tag):
+    """
+    Converts AOT.ru tag to positional.Tag format.
+    This is lossy because of format differences.
+    """
+
+    pos, info = _split_tag(aot_tag)
 
     tag = positional.Tag()
 
@@ -162,14 +235,13 @@ def to_positional(aot_tag):
 
     # ==== 3: gender ====
 
-    if 'мр' in info:
-        tag.gender = 'M'
-    elif 'жр' in info:
-        tag.gender = 'F'
-    elif 'ср' in info:
-        tag.gender = 'N'
-    elif 'мр-жр' in info:
-        tag.gender = 'X' # fixme?
+    for gender in GENDERS:
+        if gender in info:
+            tag.gender = GENDERS[gender]
+            break
+    else:
+        if 'мр-жр' in info:
+            tag.gender = 'X' # fixme?
 
     # ==== 4: animacy ====
     # FIXME
@@ -196,20 +268,12 @@ def to_positional(aot_tag):
     # tag.number = 'X'
 
     # ======== 6: case ==========
-    CASES = {
-        'им': '1',
-        'рд': '2',
-        'дт': '3',
-        'вн': '4',
-        'тв': '7',
-        'пр': '6',
-    }
     for case in CASES:
         if case in info:
             tag.case = CASES[case]
         if '2' in info:
             tag.variant = '1'
-    if 'зв' in CASES:
+    if 'зв' in info:
         tag.case = '1'
         tag.variant = '1'
 
@@ -218,7 +282,6 @@ def to_positional(aot_tag):
 
     # ======= 9: person ========
     # fixme: it should be X for non-declinable verbs
-    PERSONS = {'1л': '1', '2л': '2', '3л': '3'}
     for person in PERSONS:
         if person in info:
             tag.person = PERSONS[person]
@@ -239,11 +302,6 @@ def to_positional(aot_tag):
 
     # ======= 11: tense =========
     if tag.POS in ['AG', 'VB', 'Vp']: # ?
-        TENSES = {
-            'нст': 'P',
-            'прш': 'R',
-            'буд': 'F',
-        }
         for tense in TENSES:
             if tense in info:
                 tag.tense = TENSES[tense]
@@ -271,8 +329,81 @@ def to_positional(aot_tag):
 
     return tag
 
+
 def from_positional(positional_tag):
-    pass
+    """
+    Converts positional.Tag to AOT format.
+    This is lossy because of format differences.
+    """
+    tag = positional_tag
+    pos, info = '', set()
+
+    if tag.POS in _POS_MAP:
+        pos = _POS_MAP[tag.POS]
+    elif tag.mainPOS in _POS_MAP:
+        pos = _POS_MAP[tag.mainPOS]
+    else:
+        pos = tag.mainPOS
+
+    # ==== 3. gender ======
+    if tag.gender in GENDERS_INV:
+        info.add(GENDERS_INV[tag.gender])
+
+    # ==== 4. animacy =====
+    if tag.animacy == 'A':
+        info.add('од')
+    elif tag.animacy == 'I':
+        info.add('но')
+    elif tag.animacy == 'X':
+        info.update(['од', 'но'])
+
+    # ===== 5. number =======
+    if tag.number == 'P':
+        info.add('мн')
+    elif tag.number == 'S':
+        info.add('ед')
+    elif tag.number == 'X':
+        pass # fixme
+
+    # ====== 6. case =========
+    if tag.case in CASES_INV:
+        info.add(CASES_INV[tag.case])
+
+    # 7. posessor's gender
+    # 8. posessor's number
+
+    # ====== 9. person ========
+    if tag.person in PERSONS_INV:
+        info.add(PERSONS_INV[tag.person])
+
+    # 10. reflexivity
+
+    # ====== 11. tense ========
+    if tag.tense in TENSES_INV:
+        info.add(TENSES_INV[tag.tense])
+
+    # 12. verbal aspect
+
+    # ====== 13. degree of comparison ======
+    if tag.degree_of_comparison == '2':
+        info.add('сравн')
+    elif tag.degree_of_comparison == '3':
+        info.add('прев')
+    if tag.POS == 'Dg' and tag.degree_of_comparison == '2': # hack?
+        pos = 'П'
+
+    # 14. negation
+
+    # ====== 15. voice ==========
+    if tag.voice == 'A':
+        info.add('дст')
+    elif tag.voice == 'P':
+        info.add('стр')
+    elif tag.mainPOS == 'V' and tag.tense != 'F': # hack?
+        info.add('дст')
+
+
+    return ",".join([pos] + list(info))
 
 converters.add('positional', 'aot', from_positional)
 converters.add('aot', 'positional', to_positional)

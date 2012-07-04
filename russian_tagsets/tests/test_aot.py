@@ -4,8 +4,9 @@ import pytest
 
 from russian_tagsets import converters
 from russian_tagsets import positional
+from russian_tagsets import aot
 
-def _remove_unsupported(tag):
+def _remove_unsupported_pos(tag):
     if not isinstance(tag, positional.Tag):
         tag = positional.Tag(tag)
 
@@ -45,8 +46,25 @@ def _remove_unsupported(tag):
     if tag.POS in ['Cj', 'Ca', 'Cu', 'Cv']:
         tag.POS = 'Cn'
 
-
     return str(tag)
+
+def _remove_unsupported_aot(tag):
+    pos, info = aot._split_tag(tag)
+    info.discard('од')
+    info.discard('но')
+    info.discard('указат')
+
+    if pos == 'ПРЕДЛ':
+        info.difference_update(set(aot.CASES.keys()))
+
+    if pos == 'ЧИСЛ':
+        info.discard('ед')
+        info.discard('мн')
+
+    if pos in ['ДЕЕПРИЧАСТИЕ', 'КР_ПРИЧАСТИЕ']:
+        info.difference_update(set(aot.TENSES.keys()))
+
+    return pos, info
 
 class TestConversion(object):
 
@@ -123,15 +141,19 @@ class TestConversion(object):
     ]
 
     def assertPositionalEqual(self, converted, gold):
-        assert _remove_unsupported(converted) == _remove_unsupported(gold)
+        assert _remove_unsupported_pos(converted) == _remove_unsupported_pos(gold)
 
-#    @pytest.mark.parametrize(("word", "pos_tag_txt", "aot_tag"), TAGS)
-#    def test_from_positional(self, word, pos_tag_txt, aot_tag):
-#        converted = converters.convert(
-#            positional.Tag(pos_tag_txt),
-#            'positional', 'aot'
-#        )
-#        assert converted == aot_tag
+    def assertAotEqual(self, converted, gold):
+        assert _remove_unsupported_aot(converted) == _remove_unsupported_aot(gold)
+
+
+    @pytest.mark.parametrize(("word", "pos_tag_txt", "aot_tag"), TAGS)
+    def test_from_positional(self, word, pos_tag_txt, aot_tag):
+        converted = converters.convert(
+            positional.Tag(pos_tag_txt),
+            'positional', 'aot'
+        )
+        self.assertAotEqual(converted, aot_tag)
 
     @pytest.mark.parametrize(("word", "pos_tag_txt", "aot_tag"), TAGS)
     def test_to_positional(self, word, pos_tag_txt, aot_tag):
