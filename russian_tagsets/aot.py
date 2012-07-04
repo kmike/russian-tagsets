@@ -335,6 +335,9 @@ def from_positional(positional_tag):
     Converts positional.Tag to AOT format.
     This is lossy because of format differences.
     """
+    if not isinstance(positional_tag, positional.Tag):
+        positional_tag = positional.Tag(positional_tag)
+
     tag = positional_tag
     pos, info = '', set()
 

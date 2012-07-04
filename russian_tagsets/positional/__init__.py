@@ -172,6 +172,8 @@ def _prop(ind):
 
 class Tag(object):
     def __init__(self, txt='-'*16):
+        if isinstance(txt, bytes):
+            txt = txt.decode('ascii')
         self._data = array.array(str('u'), txt)
 
     mainPOS = property(*_prop(0))
