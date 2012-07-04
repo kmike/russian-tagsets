@@ -463,7 +463,6 @@ def from_positional(positional_tag):
     elif tag.variant == '8':
         info.add('аббр')
 
-
     return ",".join([pos] + list(info))
 
 converters.add('positional', 'aot', from_positional)
