@@ -45,7 +45,7 @@ def _remove_unsupported(tag):
     if pos != 'ПРИЧАСТИЕ':
         info.discard('дст')
         info.discard('стр')
-    return ",".join([pos] + list(info))
+    return aot.join_tag(pos, info)
 
 
 class TestDialogConversion(object):

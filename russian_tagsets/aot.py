@@ -50,6 +50,9 @@ def split_tag(aot_tag):
     else:
         return pos, set()
 
+def join_tag(pos, info_set):
+    return  ",".join([pos] + list(info_set))
+
 _POS_MAP = {
     'N': 'С',
 
