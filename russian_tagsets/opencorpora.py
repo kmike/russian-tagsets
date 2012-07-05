@@ -136,10 +136,10 @@ INTERNAL_TO_EXTERNAL = dict((item[1], item[2]) for item in GRAM_TABLE)
 EXTERNAL_TO_INTERNAL = invert_mapping(INTERNAL_TO_EXTERNAL)
 
 def external_to_internal(external_tag):
-    return ",".join(EXTERNAL_TO_INTERNAL[tok].strip() for tok in external_tag.split(','))
+    return ",".join(EXTERNAL_TO_INTERNAL.get(tok, tok).strip() for tok in external_tag.split(','))
 
 def internal_to_external(internal_tag):
-    return ",".join(INTERNAL_TO_EXTERNAL[tok].strip() for tok in internal_tag.split(','))
+    return ",".join(INTERNAL_TO_EXTERNAL.get(tok, tok).strip() for tok in internal_tag.split(','))
 
 
 def to_aot(open_tag):
