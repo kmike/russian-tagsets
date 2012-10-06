@@ -138,11 +138,21 @@ EXTERNAL_TO_INTERNAL = invert_mapping(INTERNAL_TO_EXTERNAL)
 EXTERNAL_TO_AOT = dict((item[2], item[5]) for item in GRAM_TABLE
                         if item[5] is not None)
 
+def _translate_comma_separated(tag_part, mapping):
+    return ",".join([mapping.get(tok, tok).strip() for tok in tag_part.split(',')])
+
+def _translate_tag(tag, mapping):
+    return " ".join([
+        _translate_comma_separated(part, mapping)
+        for part in tag.split()
+    ])
+
+
 def external_to_internal(external_tag):
-    return ",".join(EXTERNAL_TO_INTERNAL.get(tok, tok).strip() for tok in external_tag.split(','))
+    return _translate_tag(external_tag, EXTERNAL_TO_INTERNAL)
 
 def internal_to_external(internal_tag):
-    return ",".join(INTERNAL_TO_EXTERNAL.get(tok, tok).strip() for tok in internal_tag.split(','))
+    return _translate_tag(internal_tag, INTERNAL_TO_EXTERNAL)
 
 
 def to_aot(open_tag):

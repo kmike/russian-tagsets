@@ -7,7 +7,7 @@ from .opencorpora_aot_data import PARSE_RESULTS
 
 class TestInternalConversion(object):
     TEST_DATA = [
-        ['власть', 'NOUN,inan,femn,sing,nomn', 'СУЩ,неод,жр,ед,им'],
+        ['власть', 'NOUN,inan,femn sing,nomn', 'СУЩ,неод,жр ед,им'],
         ['поменяться', 'INFN,perf,intr', 'ИНФ,сов,неперех'],
         ['.', 'PNCT', 'PNCT'],
     ]
