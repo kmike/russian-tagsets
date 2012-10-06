@@ -4,3 +4,4 @@
 ^\.coverage$
 ^MANIFEST$
 ipynb$
+^dist
