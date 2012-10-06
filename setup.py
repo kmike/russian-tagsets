@@ -13,12 +13,11 @@ setup(
     author_email='kmike84@gmail.com',
 
     url = 'https://github.com/kmike/russian-tagsets/',
-    test_requires = ['pytest'],
 
     packages = ['russian_tagsets', 'russian_tagsets.positional'],
 
     classifiers=[
-        'Development Status :: 2 - Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
