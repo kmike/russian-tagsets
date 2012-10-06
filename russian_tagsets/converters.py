@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 from russian_tagsets.convert_engine import Registry
 
 _registry = Registry()
@@ -32,3 +32,21 @@ def convert(obj, type_from, type_to):
     for func in steps(type_from, type_to):
         obj = func(obj)
     return obj
+
+def get_supported():
+    """
+    Returns a list of directly supported conversions
+    """
+    return _registry.get_supported()
+
+def converter(type_from, type_to):
+    """
+    Returns conversion function.
+    """
+    def conversion_func(tag):
+        return convert(tag, type_from, type_to)
+
+    conversion_func.__doc__ = """
+    Converts ``tag`` from '%s' to '%s'.
+    """ % (type_from, type_to)
+    return conversion_func

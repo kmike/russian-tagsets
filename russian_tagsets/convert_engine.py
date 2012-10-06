@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
+import collections
 
 class NoConvertPath(Exception):
     pass
@@ -33,7 +34,7 @@ class Registry(object):
     def __init__(self):
         # Directed graph of all possible transformations.
         # _registry['from']['to'] -> transformation function
-        self._registry = {}
+        self._registry = collections.defaultdict(dict)
 
     def add(self, type_from, type_to, method):
         """
@@ -43,9 +44,6 @@ class Registry(object):
         :param:``method`` signature should receive object of type ``type_from``
         and return an object of type ``type_to``.
         """
-        if type_from not in self._registry:
-            self._registry[type_from] = {}
-
         self._registry[type_from][type_to] = method
 
     def path(self, type_from, type_to):
@@ -72,3 +70,10 @@ class Registry(object):
         for func in self.steps(type_from, type_to):
             obj = func(obj)
         return obj
+
+    def get_supported(self):
+        res = []
+        for type_from in self._registry:
+            for type_to in self._registry[type_from]:
+                res.append((type_from, type_to))
+        return res

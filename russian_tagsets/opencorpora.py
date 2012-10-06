@@ -156,7 +156,7 @@ def internal_to_external(internal_tag):
 
 
 def to_aot(open_tag):
-    open_tags = open_tag.split(',')
+    open_tags = open_tag.replace(" ", ',').split(',')
     open_pos, open_info = open_tags[0], open_tags[1:]
 
     pos = EXTERNAL_TO_AOT.get(open_pos, None)
@@ -190,4 +190,4 @@ def from_aot(aot_tag):
 converters.add('opencorpora-int', 'opencorpora', internal_to_external)
 converters.add('opencorpora', 'opencorpora-int', external_to_internal)
 converters.add('opencorpora', 'aot', to_aot)
-converters.add('aot', 'opencorpora', from_aot)
+#converters.add('aot', 'opencorpora', from_aot)
