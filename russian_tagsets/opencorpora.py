@@ -7,7 +7,8 @@ from __future__ import absolute_import, unicode_literals
 from russian_tagsets import converters, positional, aot
 from russian_tagsets.utils import invert_mapping
 
-GRAM_TABLE = [ # num, internal tag, external tag, description, parent, aot.ru tag
+GRAM_TABLE = [
+    # num, internal tag, external tag, description, parent, aot.ru tag
     ['1', 'POST', 'ЧР', 'часть речи', '—', None],
     ['2', 'NOUN', 'СУЩ', 'имя существительное', 'POST', 'С'],
     ['3', 'ADJF', 'ПРИЛ', 'имя прилагательное (полное)', 'POST', 'П'],
@@ -129,7 +130,9 @@ GRAM_TABLE = [ # num, internal tag, external tag, description, parent, aot.ru ta
     ['110', 'Coun', 'счетн', 'счётная форма', '—', None],
     ['111', 'Coll', 'собир', 'собирательное числительное', '—', None],
     ['112', 'V-sh', '*ши', 'деепричастие на -ши', '—', None],
-    ['113', 'Af-p', '*предл', 'форма после предлога', '—', None]
+    ['113', 'Af-p', '*предл', 'форма после предлога', '—', None],
+    ['114', 'Inmx', 'неодуш?', 'может использоваться как неодушевлённое', '—', None],
+    ['115', 'Vpre', 'в_предл', 'Вариант предлога ( со, подо, ...)',	'—', None],
 ]
 
 INTERNAL_TO_EXTERNAL = dict((item[1], item[2]) for item in GRAM_TABLE)

@@ -116,7 +116,7 @@ PERSONS_INV = invert_mapping(PERSONS)
 
 def to_positional(aot_tag):
     """
-    Converts AOT.ru tag to positional.Tag format.
+    Convert AOT.ru tag to positional.Tag format.
     This is lossy because of format differences.
     """
 
@@ -375,7 +375,7 @@ def to_positional(aot_tag):
 
 def from_positional(positional_tag):
     """
-    Converts positional.Tag to AOT format.
+    Convert positional.Tag to AOT format.
     This is lossy because of format differences.
     """
     if not isinstance(positional_tag, positional.Tag):

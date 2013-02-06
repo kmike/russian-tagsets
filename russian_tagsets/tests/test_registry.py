@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 import unittest
-from russian_tagsets import convert_engine
+from russian_tagsets import converters
 
 class TransformTest(unittest.TestCase):
 
     def test_transform_path(self):
-        reg = convert_engine.Registry()
+        reg = converters.Registry()
 
         ident = lambda obj: obj
         reg.add('A', 'B', ident)
@@ -21,10 +21,10 @@ class TransformTest(unittest.TestCase):
         self.assertEqual(reg.path('A', 'A'), ['A'])
         self.assertEqual(reg.path('C', 'A'), ['C', 'B', 'A'])
         self.assertEqual(reg.path('B', 'D'), ['B', 'A', 'C', 'D'])
-        self.assertRaises(convert_engine.NoConvertPath, reg.path, 'D', 'A')
+        self.assertRaises(converters.NoConvertPath, reg.path, 'D', 'A')
 
     def test_transform(self):
-        reg = convert_engine.Registry()
+        reg = converters.Registry()
         reg.add('lower', 'upper', lambda s: s.upper())
         reg.add('upper', 'none', lambda s: None)
         reg.add('upper', 'lower', lambda s: s.lower() if s.isupper() else 'Error')
