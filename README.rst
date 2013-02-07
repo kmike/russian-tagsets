@@ -52,13 +52,13 @@ pip install russian-tagsets
 
     >>> converters.get_supported()
     [(u'positional', u'aot'),
-     (u'opencorpora', u'opencorpora-int'),
-     (u'opencorpora', u'aot'),
+     (u'opencorpora-ext', u'opencorpora-int'),
+     (u'opencorpora-ext', u'aot'),
      (u'aot', u'positional'),
      (u'aot', u'dialog2010'),
      (u'dialog2010', u'aot'),
      (u'opencorpora-int', u'ruscorpora'),
-     (u'opencorpora-int', u'opencorpora')]
+     (u'opencorpora-int', u'opencorpora-ext')]
 
 "Ручной" режим (быстрее, преобразование только напрямую)::
 

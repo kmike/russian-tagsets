@@ -14,12 +14,12 @@ class TestInternalConversion(object):
 
     @pytest.mark.parametrize(("word", "internal", "external"), TEST_DATA)
     def test_from_internal(self, word, internal, external):
-        converted = converters.convert(internal, 'opencorpora-int', 'opencorpora')
+        converted = converters.convert(internal, 'opencorpora-int', 'opencorpora-ext')
         assert converted == external
 
     @pytest.mark.parametrize(("word", "internal", "external"), TEST_DATA)
     def test_to_internal(self, word, internal, external):
-        converted = converters.convert(external, 'opencorpora', 'opencorpora-int')
+        converted = converters.convert(external, 'opencorpora-ext', 'opencorpora-int')
         assert converted == internal
 
 
@@ -42,5 +42,5 @@ class TestAotConversion(object):
 
     @pytest.mark.parametrize(("word", "open_tag", "aot_tag"), PARSE_RESULTS)
     def test_to_aot(self, word, open_tag, aot_tag):
-        converted = converters.convert(open_tag, 'opencorpora', 'aot')
+        converted = converters.convert(open_tag, 'opencorpora-ext', 'aot')
         assert aot.split_tag(_remove_unsupported(converted)) == aot.split_tag(_remove_unsupported(aot_tag))

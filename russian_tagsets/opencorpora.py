@@ -180,17 +180,6 @@ def to_aot(open_tag):
     return ','.join([pos] + info)
 
 
-def from_aot(aot_tag):
-    pass
-
-
-#def to_positional(open_tag):
-#    pass
-#
-#def from_positional(open_tag):
-#    pass
-
-converters.add('opencorpora-int', 'opencorpora', internal_to_external)
-converters.add('opencorpora', 'opencorpora-int', external_to_internal)
-converters.add('opencorpora', 'aot', to_aot)
-#converters.add('aot', 'opencorpora', from_aot)
+converters.add('opencorpora-int', 'opencorpora-ext', internal_to_external)
+converters.add('opencorpora-ext', 'opencorpora-int', external_to_internal)
+converters.add('opencorpora-ext', 'aot', to_aot)
