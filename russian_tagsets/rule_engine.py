@@ -21,8 +21,12 @@ def parse(rules_text):
             if r and not r.startswith('#')]
 
 
-def apply_rules(parsed_rules, tag):
-    """ Transform ``tag`` according to ``parsed_rules``. """
+def apply_rules(parsed_rules, tag, remove_untouched=True):
+    """
+    Transform ``tag`` according to ``parsed_rules``.
+    If ``remove_untouched`` is true the grammemes that
+    were not converted are removed.
+    """
 
     grammemes = set(tag)
 
@@ -52,4 +56,5 @@ def apply_rules(parsed_rules, tag):
         grammemes -= from_set
         #print('res: ', tag)
 
-    return [g.lstrip('_') for g in tag if g not in grammemes]
+    return [g.lstrip('_') for g in tag
+            if not remove_untouched or g not in grammemes]

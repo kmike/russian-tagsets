@@ -31,10 +31,10 @@ sing => sg
 plur => pl
 """
 
-def _transform_tag(tag):
+def _transform_tag(tag, **kwargs):
     rules = rule_engine.parse(RULES2)
     return ','.join(
-        rule_engine.apply_rules(rules, tag.split(','))
+        rule_engine.apply_rules(rules, tag.split(','), **kwargs)
     )
 
 def test_parsing():
@@ -44,15 +44,28 @@ def test_parsing():
         (['|'], ['_='])
     ]
 
-TEST_DATA = [
+@pytest.mark.parametrize(("in_tag", "out_tag"), [
     ('NOUN,sing,foo', 'S,sg'),
     ('ADJS', 'A,brev'),
     ('ADJS,sing', 'A,brev,sg'),
     ('COMP', 'A,comp'),
     ('COMP,sing,Cmp2,plur', 'A,sg,pl'),
     ('COMP,sing,Supr,plur,vupr', 'A,sg,supr,dupr,pl'),
-]
-
-@pytest.mark.parametrize(("in_tag", "out_tag"), TEST_DATA)
+])
 def test_apply(in_tag, out_tag):
     assert _transform_tag(in_tag) == out_tag
+
+
+@pytest.mark.parametrize(("in_tag", "out_tag"), [
+    ('NOUN,sing,foo', 'S,sg,foo'),
+    ('ADJS', 'A,brev'),
+    ('ADJS,sing', 'A,brev,sg'),
+    ('COMP', 'A,comp'),
+    ('COMP,sing,Cmp2,plur', 'A,sg,pl'),
+    ('COMP,sing,Supr,plur,vupr', 'A,sg,supr,dupr,pl,vupr'),
+])
+def test_apply(in_tag, out_tag):
+    assert _transform_tag(in_tag, remove_untouched=False) == out_tag
+
+
+
