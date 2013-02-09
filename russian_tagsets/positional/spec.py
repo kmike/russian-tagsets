@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 # THIS IS UNUSED AND DOESN'T WORK
 
@@ -90,14 +90,14 @@ def validate(tag_string):
         raise TagValidationError('length is incorrect')
 
     for condition, conclusions in RESTRICTIONS:
-        print "Matching ", condition
+        print("Matching ", condition)
         if fnmatchcase(tag_string, condition):
-            print "Matched, checking condition ..."
+            print("Matched, checking condition ...")
 
             if not any([fnmatchcase(tag_string, conclusion) for conclusion in conclusions]):
                 raise TagValidationError("%s is not matched by %s" % (tag_string, conclusions))
 
-            print 'passed'
+            print('passed')
 
 
 SPEC = """
