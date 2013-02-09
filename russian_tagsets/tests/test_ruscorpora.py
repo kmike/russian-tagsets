@@ -185,7 +185,7 @@ TEST_DATA = [
     ("целей", "S,f,inan=pl,gen", "NOUN,inan,femn plur,gent"),
 
     # S-PRO
-    #("всего", "S-PRO,n,sg=gen", "ADVB | PRCL | ADJF,Apro masc,sing,gent | ADJF,Apro anim,masc,sing,accs | ADJF,Apro neut,sing,gent"),
+    ("всего", "S-PRO,n,sg=gen", "ADJF,Apro,Subx neut,sing,gent"), # Currently Subx is not in dictionary
     ("это", "S-PRO,n,sg=nom", "NPRO,neut sing,nomn"),
     ("ней", "S-PRO,f,sg,3p=dat", "NPRO,femn,3per sing,datv,Af-p"),
     ("них", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs,Af-p"),
@@ -195,7 +195,7 @@ TEST_DATA = [
     ("Мне", "S-PRO,sg,1p=dat", "NPRO,1per sing,datv"),
     ("них", "S-PRO,pl,3p=gen", "NPRO,3per plur,gent,Af-p"),
     # ("себе", "S-PRO=dat", "NPRO sing,datv"),
-    # ("тем", "S-PRO,n,sg=ins", "CONJ | NOUN,inan,femn plur,gent | ADJF,Apro masc,sing,ablt | ADJF,Apro neut,sing,ablt | ADJF,Apro plur,datv | NOUN,inan,femn plur,gent"),
+    ("тем", "S-PRO,n,sg=ins", "ADJF,Apro,Subx neut,sing,ablt"), # Currently Subx is not in dictionary
     ("их", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs"),
     ("я", "S-PRO,sg,1p=nom", "NPRO,1per sing,nomn"),
     ("Он", "S-PRO,m,sg,3p=nom", "NPRO,masc,3per sing,nomn"),
@@ -237,7 +237,7 @@ TEST_DATA = [
     ("московские", "A=pl,acc,inan,plen", "ADJF inan,plur,accs"),
     ("бюджет", "S,m,inan=sg,acc", "NOUN,inan,masc sing,accs"),
     ("систему", "S,f,inan=sg,acc", "NOUN,inan,femn sing,accs"),
-    # ("всё", "S-PRO,n,sg=acc", "ADJF,Apro neut,sing,accs"),
+    ("всё", "S-PRO,n,sg=acc", "ADJF,Apro,Subx neut,sing,accs"), # Currently Subx is not in dictionary
     ("право", "S,n,inan=sg,acc", "NOUN,inan,neut sing,accs"),
     ("меня", "S-PRO,sg,1p=acc", "NPRO,1per sing,accs"),
     ("выполнение", "S,n,inan=sg,acc", "NOUN,inan,neut sing,accs"),
@@ -407,7 +407,7 @@ TEST_DATA = [
     ("отдам", "V,pf,tran=sg,act,fut,1p,indic", "VERB,perf,tran sing,1per,futr,indc"),
 
     # gen
-    # ("всего", "S-PRO,n,sg=gen", "ADJF,Apro neut,sing,gent"),
+    ("всего", "S-PRO,n,sg=gen", "ADJF,Apro,Subx neut,sing,gent"), # Subx is currently not in dictionary
     ("рассмотрения", "S,n,inan=sg,gen", "NOUN,inan,neut sing,gent"),
     ("закона", "S,m,inan=sg,gen", "NOUN,inan,masc sing,gent"),
     ("изменений", "S,n,inan=pl,gen", "NOUN,inan,neut plur,gent"),

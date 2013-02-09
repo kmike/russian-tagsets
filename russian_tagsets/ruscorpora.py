@@ -31,6 +31,7 @@ TO_OPENCORPORA = rule_engine.parse("""
 # part of speech
 NOUN => S
 
+ADJF,Apro,Subx => S-PRO
 ADJF,Apro => A-PRO
 ADJF,Anum => ANUM
 ADJF => A,plen
