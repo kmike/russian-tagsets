@@ -136,7 +136,7 @@ TEST_DATA = [
     ("видно", "PARENTH", "CONJ,Prnt"),
     ("вообще", "PARENTH", "CONJ,Prnt"),
     ("Во-вторых", "PARENTH", "CONJ,Prnt"),
-    #("Короче", "PARENTH", "NOUN,inan,femn,Sgtm,Geox sing,datv | NOUN,inan,femn,Sgtm,Geox sing,loct | COMP,Qual"),
+    ("Короче", "PARENTH", "CONJ,Prnt"),
     ("Словом", "PARENTH", "CONJ,Prnt"),
     #("мол", "PARENTH", "PRCL | NOUN,inan,masc sing,nomn | NOUN,inan,masc sing,accs"),
 
@@ -462,7 +462,7 @@ TEST_DATA = [
     ("берите", "V,ipf,tran,act=pl,2p,imper", "VERB,impf,tran plur,impr,excl"),
     ("вынимайте", "V,ipf,tran=pl,act,2p,imper", "VERB,impf,tran plur,impr,excl"),
     ("читайте", "V,ipf,tran=pl,act,2p,imper", "VERB,impf,tran plur,impr,excl"),
-    # ("определим", "V,pf,tran=pl,act,1p,imper", "VERB,perf,tran sing,impr,incl"),
+    ("определим", "V,pf,tran=pl,act,1p,imper", "VERB,perf,tran sing,impr,incl"),
     ("возьми", "V,pf,tran=sg,act,2p,imper", "VERB,perf,tran sing,impr,excl"),
     ("побудьте", "V,pf,intr,act=pl,2p,imper", "VERB,perf,intr plur,impr,excl"),
     ("Идите", "V,ipf,intr,act=pl,2p,imper", "VERB,impf,intr plur,impr,excl"),
@@ -470,11 +470,11 @@ TEST_DATA = [
     ("подмети", "V,pf,tran=sg,act,2p,imper", "VERB,perf,tran sing,impr,excl"),
     ("выделяйся", "V,ipf,intr,med=sg,2p,imper", "VERB,impf,intr sing,impr,excl"),
     ("прибедняйтесь", "V,ipf,intr,med=pl,2p,imper", "VERB,impf,intr plur,impr,excl"),
-    # ("допустим", "V,pf,tran=pl,act,1p,imper", "VERB,perf,tran sing,impr,incl"),
+    ("допустим", "V,pf,tran=pl,act,1p,imper", "VERB,perf,tran sing,impr,incl"),
 
     # imper2
-    # ("Пройдёмте", "V,pf,tran=pl,act,1p,imper2", "VERB,perf,tran plur,impr,incl"),
-    # ("пойдёмте", "V,pf,intr,act=pl,1p,imper2", "VERB,perf,intr plur,impr,incl"),
+    ("Пройдёмте", "V,pf,tran=pl,act,1p,imper2", "VERB,perf,tran plur,impr,incl"),
+    ("пойдёмте", "V,pf,intr,act=pl,1p,imper2", "VERB,perf,intr plur,impr,incl"),
 
     # inan
     ("шиповник", "S,m,inan=sg,nom", "NOUN,inan,masc sing,nomn "),

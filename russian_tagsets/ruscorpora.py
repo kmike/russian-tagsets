@@ -20,13 +20,14 @@ Limitations:
 * OpenCorpora Comparative is always converted to A, while it may be
   A, ADV, NUM and PRAEDIC in RNC (there is not enough information to make
   the 1-to-1 conversion);
+
 """
 
 from __future__ import absolute_import, unicode_literals
 from russian_tagsets import rule_engine
 from russian_tagsets import converters
 
-OPENCORPORA_CONVERSION_RULES = rule_engine.parse("""
+TO_OPENCORPORA = rule_engine.parse("""
 # part of speech
 NOUN => S
 
@@ -52,8 +53,11 @@ PRTS => V,tran,partcp,brev
 
 GRND => V,ger
 
+VERB,impr,incl,sing => V,1p,imper,pl
+VERB,impr,incl,plur => V,1p,imper2,pl
 VERB,impr,excl => V,2p,imper
 VERB,impr,incl => V,1p,imper
+
 VERB => V
 
 NUMR,inan => NUM
@@ -172,8 +176,7 @@ def from_opencorpora_int(open_tag):
     # This way space is converted to "=".
 
     tag = open_tag.replace(' ', ',|,').split(',')
-    result = rule_engine.apply_rules(OPENCORPORA_CONVERSION_RULES, tag)
+    result = rule_engine.apply_rules(TO_OPENCORPORA, tag)
     return ','.join(result).replace(',=,', '=').replace(',=', '')
-
 
 converters.add('opencorpora-int', 'ruscorpora', from_opencorpora_int)
