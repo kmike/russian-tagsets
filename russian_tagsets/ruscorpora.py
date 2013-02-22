@@ -158,6 +158,9 @@ futr => fut
 indc => indic
 impr => imper
 
+# extra grammemes
+LATN => NONLEX
+
 # hack to preserve whitespace info:
 | => =
 """)
@@ -178,6 +181,11 @@ def from_opencorpora_int(open_tag):
 
     tag = open_tag.replace(' ', ',|,').split(',')
     result = rule_engine.apply_rules(TO_OPENCORPORA, tag)
-    return ','.join(result).replace(',=,', '=').replace(',=', '')
+    result = ','.join(result).replace(',=,', '=').replace(',=', '')
+    if result == '':
+        return 'NONLEX'
+    return result
+
+
 
 converters.add('opencorpora-int', 'ruscorpora', from_opencorpora_int)

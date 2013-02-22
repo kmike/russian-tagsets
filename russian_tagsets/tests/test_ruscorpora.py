@@ -839,6 +839,10 @@ TEST_DATA = [
     # voc
     # ("Зинк", "S,persn,f,anim=sg,voc", "NOUN,anim,masc sing,nomn | NOUN,inan,masc sing,nomn"),
     # zoon
+
+    # nonlex
+    ("foo", "NONLEX", "LATN"),
+    ("foo", "NONLEX", "UNKN"),
 ]
 
 def test_from_opencorpora():
