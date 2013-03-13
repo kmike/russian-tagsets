@@ -33,7 +33,7 @@ def apply_rules(parsed_rules, tag, remove_untouched=True):
     for from_, to_ in parsed_rules:
         from_set = set(from_)
 
-        if not from_set.issubset(grammemes):
+        if not from_set <= grammemes:
             # rule doesn't apply
             continue
 
