@@ -193,5 +193,4 @@ def from_opencorpora_int(open_tag):
     return result
 
 
-
 converters.add('opencorpora-int', 'ruscorpora', from_opencorpora_int)

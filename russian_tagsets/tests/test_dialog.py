@@ -57,7 +57,7 @@ class TestDialogConversion(object):
         pos_gold, info_gold = aot.split_tag_raw(gold)
         pos_got, info_got = aot.split_tag(converted)
         assert pos_gold == pos_got
-        assert _gram_info_match(info_gold, info_got)
+        assert _gram_info_match(info_gold, info_got), (converted, gold)
 
     @pytest.mark.parametrize(("word", "dialog_tag", "aot_tag"), TEST_DATA)
     def test_from_aot(self, word, dialog_tag, aot_tag):
@@ -69,6 +69,7 @@ class TestDialogConversion(object):
         if '[' in dialog_tag:
             dialog_tag = dialog_tag.split('[')[0]
         converted = converters.convert(dialog_tag, 'dialog2010', 'aot')
+        converted = _remove_unsupported(converted)
         gold = _remove_unsupported(aot_tag)
         self.assertTagEqual(converted, gold)
 
