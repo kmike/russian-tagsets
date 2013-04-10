@@ -160,11 +160,11 @@ impr => imper
 
 # extra grammemes
 LATN => NONLEX
+ROMN => ANUM,ciph
 
 # non-standard & pymorphy2-specific
 # (RNC doesn't tag punctuation marks)
 PNCT => PNCT
-NUMB,Romn => ANUM,ciph
 NUMB => NUM,ciph
 
 # hack to preserve whitespace info:
