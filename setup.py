@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 from distutils.core import setup
 
-__version__ = '0.3'
+__version__ = '0.3.1'
 
 setup(
     name="russian-tagsets",
