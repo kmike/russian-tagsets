@@ -34,19 +34,19 @@ TEST_DATA = [
     # 3p
     ("растёт", "V,ipf,intr,act=sg,praes,3p,indic", "VERB,impf,intr sing,3per,pres,indc"),
     ("Оказывается", "V,ipf,intr,med=sg,praes,3p,indic", "VERB,impf,intr sing,3per,pres,indc"),
-    ("ней", "S-PRO,f,sg,3p=dat", "NPRO,femn,3per sing,datv,Af-p"),
-    ("них", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs,Af-p"),
-    ("она", "S-PRO,f,sg,3p=nom", "NPRO,femn,3per sing,nomn"),
-    ("ему", "S-PRO,m,sg,3p=dat", "NPRO,masc,3per sing,datv"),
+    ("ней", "S-PRO,f,sg,3p=dat", "NPRO,femn,3per,Anph sing,datv,Af-p"),
+    ("них", "S-PRO,pl,3p=acc", "NPRO,3per,Anph plur,accs,Af-p"),
+    ("она", "S-PRO,f,sg,3p=nom", "NPRO,femn,3per,Anph sing,nomn"),
+    ("ему", "S-PRO,m,sg,3p=dat", "NPRO,masc,3per,Anph sing,datv"),
     ("Будут", "V,ipf,intr,act=pl,fut,3p,indic", "VERB,impf,intr plur,3per,futr,indc"),
     ("осуществляет", "V,ipf,tran=sg,act,praes,3p,indic", "VERB,impf,tran sing,3per,pres,indc"),
     ("рассматриваются", "V,ipf,intr,med=pl,praes,3p,indic", "VERB,impf,intr plur,3per,pres,indc"),
     ("являются", "V,ipf,intr,med=pl,praes,3p,indic", "VERB,impf,intr plur,3per,pres,indc"),
     ("чистят", "V,ipf,tran=pl,act,praes,3p,indic", "VERB,impf,tran plur,3per,pres,indc"),
     ("попадает", "V,ipf,intr,act=sg,praes,3p,indic", "VERB,impf,intr sing,3per,pres,indc"),
-    ("его", "S-PRO,m,sg,3p=acc", "NPRO,masc,3per sing,accs"),
-    ("их", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs"),
-    ("Они", "S-PRO,pl,3p=nom", "NPRO,3per plur,nomn"),
+    ("его", "S-PRO,m,sg,3p=acc", "NPRO,masc,3per,Anph sing,accs"),
+    ("их", "S-PRO,pl,3p=acc", "NPRO,3per,Anph plur,accs"),
+    ("Они", "S-PRO,pl,3p=nom", "NPRO,3per,Anph plur,nomn"),
 
     # A
     ("дикая", "A=f,sg,nom,plen", "ADJF,Qual femn,sing,nomn"),
@@ -67,17 +67,17 @@ TEST_DATA = [
     # ("его", "A-PRO", "ADJF,Fixd,Apro masc,sing,nomn | ADJF,Fixd,Apro masc,sing,gent | ADJF,Fixd,Apro masc,sing,datv | ADJF,Fixd,Apro masc,sing,accs | ADJF,Fixd,Apro masc,sing,ablt | ADJF,Fixd,Apro masc,sing,loct | ADJF,Fixd,Apro femn,sing,nomn | ADJF,Fixd,Apro femn,sing,gent | ADJF,Fixd,Apro femn,sing,datv | ADJF,Fixd,Apro femn,sing,accs | ADJF,Fixd,Apro femn,sing,ablt | ADJF,Fixd,Apro femn,sing,loct | ADJF,Fixd,Apro neut,sing,nomn | ADJF,Fixd,Apro neut,sing,gent | ADJF,Fixd,Apro neut,sing,datv | ADJF,Fixd,Apro neut,sing,accs | ADJF,Fixd,Apro neut,sing,ablt | ADJF,Fixd,Apro neut,sing,loct | ADJF,Fixd,Apro plur,nomn | ADJF,Fixd,Apro plur,gent | ADJF,Fixd,Apro plur,datv | ADJF,Fixd,Apro plur,accs | ADJF,Fixd,Apro plur,ablt | ADJF,Fixd,Apro plur,loct | NPRO,masc,3per sing,gent | NPRO,masc,3per sing,accs | NPRO,neut,3per sing,gent | NPRO,neut,3per sing,accs"),
     ("нашего", "A-PRO=m,sg,gen", "ADJF,Apro masc,sing,gent"),
     ("все", "A-PRO=pl,nom", "ADJF,Apro plur,nomn"),
-    ("которыми", "A-PRO=pl,ins", "ADJF,Apro plur,ablt"),
-    ("своих", "A-PRO=pl,acc,anim", "ADJF,Apro anim,plur,accs"),
+    ("которыми", "A-PRO=pl,ins", "ADJF,Apro,Subx,Anph plur,ablt"),
+    ("своих", "A-PRO=pl,acc,anim", "ADJF,Apro,Anph anim,plur,accs"),
     ("всем", "A-PRO=m,sg,ins", "ADJF,Apro masc,sing,ablt"),
     ("наш", "A-PRO=m,sg,acc,inan", "ADJF,Apro inan,masc,sing,accs"),
-    ("которой", "A-PRO=f,sg,loc", "ADJF,Apro femn,sing,loct"),
-    ("другим", "A-PRO=pl,dat", "ADJF,Apro plur,datv"),
-    ("которую", "A-PRO=f,sg,acc", "ADJF,Apro femn,sing,accs"),
-    ("своего", "A-PRO=n,sg,gen", "ADJF,Apro neut,sing,gent"),
+    ("которой", "A-PRO=f,sg,loc", "ADJF,Apro,Subx,Anph femn,sing,loct"),
+    # ("другим", "A-PRO=pl,dat", "ADJF,Apro,Subx plur,datv"),
+    ("которую", "A-PRO=f,sg,acc", "ADJF,Apro,Subx,Anph femn,sing,accs"),
+    ("своего", "A-PRO=n,sg,gen", "ADJF,Apro,Anph neut,sing,gent"),
     ("многих", "A-PRO=pl,loc", "ADJF,Apro plur,loct"),
     ("все", "A-PRO=pl,acc,inan", "ADJF,Apro inan,plur,accs"),
-    ("которому", "A-PRO=m,sg,dat", "ADJF,Apro masc,sing,datv"),
+    ("которому", "A-PRO=m,sg,dat", "ADJF,Apro,Subx,Anph masc,sing,datv"),
     # ("всё", "A-PRO=n,sg,acc,inan", "ADJF,Apro neut,sing,accs"),
 
     # ADV
@@ -107,7 +107,7 @@ TEST_DATA = [
     # ("одна", "ANUM=f,nom", "ADJF,Apro femn,sing,nomn"),
     ("первый", "ANUM=m,sg,nom", "ADJF,Anum masc,sing,nomn"),
     ("десятые", "ANUM=pl,nom", "ADJF,Anum plur,nomn"),
-    ("третьей", "ANUM=f,sg,ins", "ADJF,Subx,Anum femn,sing,ablt"),
+    ("третьей", "ANUM=f,sg,ins", "ADJF,Anum femn,sing,ablt"),
     ("пятый", "ANUM=m,sg,nom", "ADJF,Anum masc,sing,nomn"),
 
     # CONJ
@@ -187,18 +187,18 @@ TEST_DATA = [
     # S-PRO
     ("всего", "S-PRO,n,sg=gen", "ADJF,Apro,Subx neut,sing,gent"), # Currently Subx is not in dictionary
     ("это", "S-PRO,n,sg=nom", "NPRO,neut sing,nomn"),
-    ("ней", "S-PRO,f,sg,3p=dat", "NPRO,femn,3per sing,datv,Af-p"),
-    ("них", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs,Af-p"),
+    ("ней", "S-PRO,f,sg,3p=dat", "NPRO,femn,3per,Anph sing,datv,Af-p"),
+    ("них", "S-PRO,pl,3p=acc", "NPRO,3per,Anph plur,accs,Af-p"),
     ("этого", "S-PRO,n,sg=gen", "NPRO,neut sing,gent"),
 
-    ("него", "S-PRO,m,sg,3p=gen", "NPRO,masc,3per sing,gent,Af-p"),
+    ("него", "S-PRO,m,sg,3p=gen", "NPRO,masc,3per,Anph sing,gent,Af-p"),
     ("Мне", "S-PRO,sg,1p=dat", "NPRO,1per sing,datv"),
-    ("них", "S-PRO,pl,3p=gen", "NPRO,3per plur,gent,Af-p"),
+    ("них", "S-PRO,pl,3p=gen", "NPRO,3per,Anph plur,gent,Af-p"),
     # ("себе", "S-PRO=dat", "NPRO sing,datv"),
-    ("тем", "S-PRO,n,sg=ins", "ADJF,Apro,Subx neut,sing,ablt"), # Currently Subx is not in dictionary
-    ("их", "S-PRO,pl,3p=acc", "NPRO,3per plur,accs"),
+    # ("тем", "S-PRO,n,sg=ins", "ADJF,Apro,Subx,Anph neut,sing,ablt"),
+    ("их", "S-PRO,pl,3p=acc", "NPRO,3per,Anph plur,accs"),
     ("я", "S-PRO,sg,1p=nom", "NPRO,1per sing,nomn"),
-    ("Он", "S-PRO,m,sg,3p=nom", "NPRO,masc,3per sing,nomn"),
+    ("Он", "S-PRO,m,sg,3p=nom", "NPRO,masc,3per,Anph sing,nomn"),
     ("этому", "S-PRO,n,sg=dat", "NPRO,neut sing,datv"),
 
     # V
@@ -372,13 +372,13 @@ TEST_DATA = [
     ("собачья", "A=f,sg,nom,plen", "ADJF,Poss femn,sing,nomn"),
     ("связи", "S,f,inan=sg,loc2", "NOUN,inan,femn sing,loc2"),
     ("пассажирка", "S,f,anim=sg,nom", "NOUN,anim,femn sing,nomn"),
-    ("ней", "S-PRO,f,sg,3p=ins", "NPRO,femn,3per sing,ablt,Af-p"),
+    ("ней", "S-PRO,f,sg,3p=ins", "NPRO,femn,3per,Anph sing,ablt,Af-p"),
     ("никакой", "A-PRO=f,sg,gen", "ADJF,Apro femn,sing,gent"),
     ("включена", "V,pf,tran=partcp,f,sg,brev,pass,praet", "PRTS,perf,past,pssv femn,sing"),
     ("стены", "S,f,inan=sg,gen", "NOUN,inan,femn sing,gent"),
     ("никакая", "A-PRO=f,sg,nom", "ADJF,Apro femn,sing,nomn"),
     ("мрачной", "A=f,sg,ins,plen", "ADJF,Qual femn,sing,ablt"),
-    ("другой", "A-PRO=f,sg,gen", "ADJF,Apro femn,sing,gent"),
+    # ("другой", "A-PRO=f,sg,gen", "ADJF,Apro,Subx femn,sing,gent"),
     ("недостающей", "V,ipf,intr,act=partcp,f,sg,gen,praes,plen", "PRTF,impf,intr,pres,actv femn,sing,gent"),
     ("Суть", "S,f,inan=sg,nom", "NOUN,inan,femn sing,nomn"),
 
@@ -435,9 +435,9 @@ TEST_DATA = [
     ("Лишку", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
     ("народу", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
     ("коньяку", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
-    # ("разу", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,datv"),
-    # ("виду", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2 | NOUN,inan,masc sing,datv | NOUN,inan,masc sing,loc2"),
-    ("году", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2,Infr"),
+    ("разу", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
+    ("виду", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
+    ("году", "S,m,inan=sg,gen2", "NOUN,inan,masc sing,gen2"),
 
     # ger
     ("затратив", "V,pf,tran=ger,act,praet", "GRND,perf,tran past"),
@@ -477,7 +477,7 @@ TEST_DATA = [
     ("пойдёмте", "V,pf,intr,act=pl,1p,imper2", "VERB,perf,intr plur,impr,incl"),
 
     # inan
-    ("шиповник", "S,m,inan=sg,nom", "NOUN,inan,masc sing,nomn "),
+    ("шиповник", "S,m,inan=sg,nom", "NOUN,inan,masc sing,nomn"),
     ("программы", "S,f,inan=sg,gen", "NOUN,inan,femn sing,gent"),
     ("обязательств", "S,n,inan=pl,gen", "NOUN,inan,neut plur,gent"),
     ("поцелуи", "S,m,inan=pl,acc", "NOUN,inan,masc plur,accs"),
@@ -641,7 +641,7 @@ TEST_DATA = [
     ("изменений", "S,n,inan=pl,gen", "NOUN,inan,neut plur,gent"),
     ("незаконное", "A=n,sg,nom,plen", "ADJF,Qual neut,sing,nomn"),
     ("назначения", "S,n,inan=sg,gen", "NOUN,inan,neut sing,gent"),
-    ("такое", "A-PRO=n,sg,nom", "ADJF,Apro neut,sing,nomn "),
+    ("такое", "A-PRO=n,sg,nom", "ADJF,Apro neut,sing,nomn"),
     ("иностранного", "A=n,sg,gen,plen", "ADJF neut,sing,gent"),
     ("Единство", "S,n,inan=sg,nom", "NOUN,inan,neut sing,nomn"),
     ("случилось", "V,pf,intr,med=n,sg,praet,indic", "VERB,perf,intr neut,sing,past,indc"),
@@ -651,7 +651,7 @@ TEST_DATA = [
     # nom
     ("шиповник", "S,m,inan=sg,nom", "NOUN,inan,masc sing,nomn"),
     ("промежуточный", "A=m,sg,nom,plen", "ADJF masc,sing,nomn"),
-    ("которые", "A-PRO=pl,nom", "ADJF,Apro plur,nomn"),
+    ("которые", "A-PRO=pl,nom", "ADJF,Apro,Subx,Anph plur,nomn"),
     ("суд", "S,m,inan=sg,nom", "NOUN,inan,masc sing,nomn"),
     ("совещание", "S,n,inan=sg,nom", "NOUN,inan,neut sing,nomn"),
     ("подвижная", "A=f,sg,nom,plen", "ADJF,Qual femn,sing,nomn"),
@@ -837,7 +837,7 @@ TEST_DATA = [
     ("платят", "V,ipf,tran=pl,act,praes,3p,indic", "VERB,impf,tran plur,3per,pres,indc"),
 
     # voc
-    # ("Зинк", "S,persn,f,anim=sg,voc", "NOUN,anim,masc sing,nomn | NOUN,inan,masc sing,nomn"),
+    ("Зинк", "S,persn,f,anim=sg,voc", "NOUN,anim,femn,Name sing,voct,Infr"),
     # zoon
 
     # nonlex

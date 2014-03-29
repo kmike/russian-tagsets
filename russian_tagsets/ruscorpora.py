@@ -27,10 +27,11 @@ from __future__ import absolute_import, unicode_literals
 from russian_tagsets import rule_engine
 from russian_tagsets import converters
 
-TO_OPENCORPORA = rule_engine.parse("""
+FROM_OPENCORPORA = rule_engine.parse("""
 # part of speech
 NOUN => S
 
+ADJF,Apro,Subx,Anph => A-PRO
 ADJF,Apro,Subx => S-PRO
 ADJF,Apro => A-PRO
 ADJF,Anum => ANUM
@@ -186,7 +187,7 @@ def from_opencorpora_int(open_tag):
     # This way space is converted to "=".
 
     tag = open_tag.replace(' ', ',|,').split(',')
-    result = rule_engine.apply_rules(TO_OPENCORPORA, tag)
+    result = rule_engine.apply_rules(FROM_OPENCORPORA, tag)
     result = ','.join(result).replace(',=,', '=').replace(',=', '')
     if result == '':
         return 'NONLEX'
