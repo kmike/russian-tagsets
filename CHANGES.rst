@@ -1,6 +1,12 @@
 Changes
 =======
 
+0.5 (2014-04-22)
+----------------
+
+- Added support for initials in OpenCorpora -> RusCorpora conversion rules;
+- small code cleanup.
+
 0.4 (2014-03-14)
 ----------------
 
