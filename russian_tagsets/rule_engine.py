@@ -21,14 +21,14 @@ def parse(rules_text):
             if r and not r.startswith('#')]
 
 
-def apply_rules(parsed_rules, tag, remove_untouched=True):
+def apply_rules(parsed_rules, grammeme_list, remove_untouched=True):
     """
     Transform ``tag`` according to ``parsed_rules``.
     If ``remove_untouched`` is true the grammemes that
     were not converted are removed.
     """
 
-    grammemes = set(tag)
+    grammemes = set(grammeme_list)
 
     for from_, to_ in parsed_rules:
         from_set = set(from_)
@@ -41,20 +41,20 @@ def apply_rules(parsed_rules, tag, remove_untouched=True):
 
         last_index = None
         for gr_from, gr_to in zip(from_, to_):
-            for idx, gr in enumerate(tag):
+            for idx, gr in enumerate(grammeme_list):
                 if gr == gr_from:
-                    tag[idx] = gr_to
+                    grammeme_list[idx] = gr_to
                     last_index = idx
 
         if len(from_) > len(to_):
             for gr in from_[len(to_):]:
-                tag.remove(gr)
+                grammeme_list.remove(gr)
 
         if len(from_) < len(to_):
-            tag = tag[:last_index+1] + to_[len(from_):] + tag[last_index+1:]
+            grammeme_list = grammeme_list[:last_index+1] + to_[len(from_):] + grammeme_list[last_index+1:]
 
         grammemes -= from_set
         #print('res: ', tag)
 
-    return [g.lstrip('_') for g in tag
+    return [g.lstrip('_') for g in grammeme_list
             if not remove_untouched or g not in grammemes]
