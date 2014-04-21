@@ -172,6 +172,14 @@ NUMB => NUM,ciph
 | => =
 """)
 
+
+def _is_initials(opencorpora_grammemes):
+    if set(['NOUN', 'Sgtm', 'Abbr', 'Fixd']).issubset(opencorpora_grammemes):
+        if set(['Name', 'Patr']).intersection(opencorpora_grammemes):
+            return True
+    return False
+
+
 def from_opencorpora_int(open_tag):
     """
     Convert OpenCorpora tag to www.ruscorpora.com tag::
@@ -186,8 +194,12 @@ def from_opencorpora_int(open_tag):
     # then commas around "=" are removed in result.
     # This way space is converted to "=".
 
-    tag = open_tag.replace(' ', ',|,').split(',')
-    result = rule_engine.apply_rules(FROM_OPENCORPORA, tag)
+    grammeme_list = open_tag.replace(' ', ',|,').split(',')
+
+    if _is_initials(grammeme_list):
+        return 'INIT=abbr'
+
+    result = rule_engine.apply_rules(FROM_OPENCORPORA, grammeme_list)
     result = ','.join(result).replace(',=,', '=').replace(',=', '')
     if result == '':
         return 'NONLEX'
