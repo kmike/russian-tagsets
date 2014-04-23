@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.5.1 (2014-04-23)
+------------------
+
+- Added support for Init OpenCorpora grammeme.
+
 0.5 (2014-04-22)
 ----------------
 
