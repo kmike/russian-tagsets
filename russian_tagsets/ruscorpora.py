@@ -174,9 +174,13 @@ NUMB => NUM,ciph
 
 
 def _is_initials(opencorpora_grammemes):
+    if 'Init' in opencorpora_grammemes:
+        return True
+
     if set(['NOUN', 'Sgtm', 'Abbr', 'Fixd']).issubset(opencorpora_grammemes):
         if set(['Name', 'Patr']).intersection(opencorpora_grammemes):
             return True
+
     return False
 
 

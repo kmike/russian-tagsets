@@ -115,7 +115,9 @@ TEST_DATA = [
 
     # INIT
     ("Д", "INIT=abbr", "NOUN,anim,masc,Sgtm,Name,Fixd,Abbr sing,accs"),
+    ("Д", "INIT=abbr", "NOUN,anim,masc,Sgtm,Name,Fixd,Abbr,Init sing,accs"),
     ("Д", "INIT=abbr", "NOUN,anim,masc,Sgtm,Patr,Fixd,Abbr sing,nomn"),
+    ("Д", "INIT=abbr", "NOUN,anim,masc,Sgtm,Patr,Fixd,Abbr,Init sing,nomn"),
 
     # INTJ
     ("О", "INTJ", "INTJ"),
