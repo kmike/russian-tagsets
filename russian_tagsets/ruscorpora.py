@@ -112,8 +112,8 @@ acc2 => acc2
 loc1 => loc
 loc2 => loc2
 
-# Abbr doesn't mean the same
-# Abbr => abbr
+# Abbr doesn't mean the same, but convert it nevertheless
+Abbr => abbr
 
 Name => persn
 Surn => famn

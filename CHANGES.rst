@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.5.2 (2014-08-19)
+------------------
+
+- Handle "abbr" grammeme in OpenCorpora -> RusCorpora conversion.
+
 0.5.1 (2014-04-23)
 ------------------
 

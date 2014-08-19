@@ -4,7 +4,7 @@ from russian_tagsets import ruscorpora
 
 TEST_DATA = [
     # 0
-    ("СССР", "S,m,inan,0=sg,gen", "NOUN,inan,masc,Sgtm,Fixd,Abbr,Geox sing,gent"),
+    ("СССР", "S,m,inan,0,abbr=sg,gen", "NOUN,inan,masc,Sgtm,Fixd,Abbr,Geox sing,gent"),
     # ("Пеано", "S,famn,m,anim,0=sg,ins", "NOUN,anim,masc,Sgtm,Fixd,Surn sing,ablt"),
     # ("Кинзмараули", "S,0=pl,nom", "NOUN,inan,neut,Sgtm,Fixd sing,nomn"),
 
