@@ -1,0 +1,8 @@
+.tox
+*.pyc
+__pycache__
+MANIFEST
+^\.coverage$
+^MANIFEST$
+ipynb$
+^dist
