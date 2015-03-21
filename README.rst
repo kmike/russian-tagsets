@@ -9,7 +9,7 @@ russian-tagsets
 На данный момент поддерживается (с разной степенью корректности)
 преобразование между следующими форматами:
 
-* `OpenCorpora`_;
+* `OpenCorpora`_ (в.т.ч. русские словари pymorphy2_);
 * `aot.ru`_ (в.т.ч. pymorphy_ 0.5.6);
 * `Диалог-2010`_
 * `A Positional Tagset for Russian`_ (Jirka Hana and Anna Feldman, 2010);
@@ -18,6 +18,7 @@ russian-tagsets
 .. _OpenCorpora: http://opencorpora.org/dict.php?act=gram
 .. _aot.ru: http://aot.ru/docs/rusmorph.html
 .. _pymorphy: http://pymorphy.readthedocs.org/en/v0.5.6/ref/gram_info_ru.html
+.. _pymorphy2: https://github.com/kmike/pymorphy2
 .. _Диалог-2010: http://ru-eval.ru/
 .. _A Positional Tagset for Russian: http://ufal.mff.cuni.cz/~hana/morph/rutags.html
 .. _НКРЯ: http://www.ruscorpora.ru/corpora-morph.html
@@ -69,12 +70,8 @@ pip install russian-tagsets
 Разработка
 ==========
 
-Репозитории:
-
-* https://github.com/kmike/russian-tagsets
-* https://bitbucket.org/kmike/russian-tagsets
-
-Баг-трекер - на гитхабе.
+* Исходный код: https://github.com/kmike/russian-tagsets
+* Баг-трекер: https://github.com/kmike/russian-tagsets/issues
 
 Для запуска тестов выполните
 
