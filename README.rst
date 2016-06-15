@@ -26,7 +26,7 @@ russian-tagsets
 
 .. _OpenCorpora: http://opencorpora.org/dict.php?act=gram
 .. _aot.ru: http://aot.ru/docs/rusmorph.html
-.. _pymorphy: http://pymorphy.readthedocs.org/en/v0.5.6/ref/gram_info_ru.html
+.. _pymorphy: https://pymorphy.readthedocs.io/en/v0.5.6/ref/gram_info_ru.html
 .. _pymorphy2: https://github.com/kmike/pymorphy2
 .. _Диалог-2010: http://ru-eval.ru/
 .. _A Positional Tagset for Russian: http://ufal.mff.cuni.cz/~hana/morph/rutags.html
