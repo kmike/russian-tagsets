@@ -81,7 +81,7 @@ GRAMINFO_MAP = dict(itertools.chain(
 ))
 GRAMINFO_MAP_INV = invert_mapping(GRAMINFO_MAP)
 
-def from_aot(aot_tag):
+def from_aot(aot_tag, word=None):
     pos, info = aot.split_tag(aot_tag)
     extra_info = set()
     if pos in ['ПРИЧАСТИЕ', 'КР_ПРИЧАСТИЕ']:
@@ -99,7 +99,7 @@ def from_aot(aot_tag):
     return ",".join(itertools.chain([POS[pos]], extra_info, new_form))
 
 
-def to_aot(dialog_tag):
+def to_aot(dialog_tag, word=None):
     pos, info = aot.split_tag(dialog_tag)
     new_form = (GRAMINFO_MAP_INV[tag] for tag in info if tag in GRAMINFO_MAP_INV)
     new_pos = POS_INV[pos]

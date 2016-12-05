@@ -153,14 +153,14 @@ def _translate_tag(tag, mapping):
     ])
 
 
-def external_to_internal(external_tag):
+def external_to_internal(external_tag, word=None):
     return _translate_tag(external_tag, EXTERNAL_TO_INTERNAL)
 
-def internal_to_external(internal_tag):
+def internal_to_external(internal_tag, word=None):
     return _translate_tag(internal_tag, INTERNAL_TO_EXTERNAL)
 
 
-def to_aot(open_tag):
+def to_aot(open_tag, word=None):
     open_tags = open_tag.replace(" ", ',').split(',')
     open_pos, open_info = open_tags[0], open_tags[1:]
 

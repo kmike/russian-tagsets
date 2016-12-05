@@ -114,7 +114,7 @@ PERSONS = {'1л': '1', '2л': '2', '3л': '3'}
 PERSONS_INV = invert_mapping(PERSONS)
 
 
-def to_positional(aot_tag):
+def to_positional(aot_tag, word=None):
     """
     Convert AOT.ru tag to positional.Tag format.
     This is lossy because of format differences.
@@ -373,7 +373,7 @@ def to_positional(aot_tag):
     return tag
 
 
-def from_positional(positional_tag):
+def from_positional(positional_tag, word=None):
     """
     Convert positional.Tag to AOT format.
     This is lossy because of format differences.
