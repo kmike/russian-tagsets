@@ -8,8 +8,8 @@ from russian_tagsets import converters, ud
 class TestInternalConversion(object):
     TEST_DATA = [
         ['власть', 'NOUN,inan,femn sing,nomn', 'NOUN Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing'],
-        ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf'],
-        ['.', 'PNCT', 'PNCT punct'],
+        ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf|VerbForm=Inf'],
+        ['.', 'PNCT', 'PUNCT punct'],
     ]
 
     @pytest.mark.parametrize(("word", "internal", "ud14"), TEST_DATA)
