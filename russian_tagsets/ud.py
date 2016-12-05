@@ -15,9 +15,13 @@ class Tag(object):
 
     GRAM_MAP = {
         '_POS': {
+            'ADJF': 'ADJ',
             'ADVB': 'ADV',
+            'INTJ': 'INTJ',
             'NOUN': 'NOUN',
+            'NPRO': 'PRON',
             'PNCT': 'PUNCT',
+            'PRCL': 'PART',
         },
         'Animacy': {
             'anim': 'Anim',
@@ -28,7 +32,11 @@ class Tag(object):
             'perf': 'Perf',
         },
         'Case': {
+            'ablt': 'Ins',
+            'accs': 'Acc',
+            'datv': 'Dat',
             'gent': 'Gen',
+            'loct': 'Loc',
             'nomn': 'Nom',
         },
         'Gender': {
@@ -37,9 +45,11 @@ class Tag(object):
             'neut': 'Neut',
         },
         'Number': {
+            'plur': 'Plur',
             'sing': 'Sing',
         },
         'Mood': {
+            'impr': 'Imp',
             'indc': 'Ind',
         },
         'Tense': {
