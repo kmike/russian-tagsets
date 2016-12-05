@@ -17,11 +17,13 @@ class Tag(object):
         '_POS': {
             'ADJF': 'ADJ',
             'ADVB': 'ADV',
+            'INFN': 'VERB',
             'INTJ': 'INTJ',
             'NOUN': 'NOUN',
             'NPRO': 'PRON',
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
+            'VERB': 'VERB',
         },
         'Animacy': {
             'anim': 'Anim',
@@ -44,21 +46,25 @@ class Tag(object):
             'masc': 'Masc',
             'neut': 'Neut',
         },
-        'Number': {
-            'plur': 'Plur',
-            'sing': 'Sing',
-        },
         'Mood': {
             'impr': 'Imp',
             'indc': 'Ind',
         },
+        'Number': {
+            'plur': 'Plur',
+            'sing': 'Sing',
+        },
         'Tense': {
             'past': 'Past',
-        }
+        },
+        'VerbForm': {
+            'INFN': 'Inf',
+            'VERB': 'Fin',
+        },
     }
 
     def __init__(self, oc_tag):
-        self.pos = 'Unknown'  # ???
+        self.pos = 'X'
         self.grammemes = set()
         self.unmatched = set()
         self._fill_from_oc(oc_tag)
@@ -69,21 +75,20 @@ class Tag(object):
             
             if gram == 'Name':
                 self.pos = 'PROPN'
-            elif gram in ('VERB', 'INFN'):
-                self.pos = 'VERB'
-                self.grammemes.add(('VerbForm', 'Fin' if gram == 'VERB' else 'Inf'))
 
     def _fill_one_gram_oc(self, gram):
+        match = False
         for categ, gmap in self.GRAM_MAP.items():
             if gram in gmap:
                 if categ == '_POS':
                     self.pos = gmap[gram]
-                    return
+                    match = True
                 else:
                     self.grammemes.add((categ, gmap[gram]))
-                    return
+                    match = True
 
-        self.unmatched.add(gram)
+        if not match:
+            self.unmatched.add(gram)
 
     def _fill_from_oc(self, oc_tag):
         grams = oc_tag.replace(' ', ',').split(',')
