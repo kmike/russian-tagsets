@@ -15,53 +15,71 @@ class Tag(object):
 
     GRAM_MAP = {
         '_POS': {
+            'ADVB': 'ADV',
             'NOUN': 'NOUN',
             'PNCT': 'PUNCT',
         },
         'Animacy': {
+            'anim': 'Anim',
             'inan': 'Inan',
         },
         'Aspect': {
+            'impf': 'Imp',
             'perf': 'Perf',
         },
         'Case': {
+            'gent': 'Gen',
             'nomn': 'Nom',
         },
         'Gender': {
             'femn': 'Fem',
+            'masc': 'Masc',
+            'neut': 'Neut',
         },
         'Number': {
             'sing': 'Sing',
         },
+        'Mood': {
+            'indc': 'Ind',
+        },
+        'Tense': {
+            'past': 'Past',
+        }
     }
 
     def __init__(self, oc_tag):
         self.pos = 'Unknown'  # ???
         self.grammemes = set()
+        self.unmatched = set()
         self._fill_from_oc(oc_tag)
 
-    def _try_apply_exceptions(self, gram):
-        if gram == 'INFN':
-            self.pos = 'VERB'
-            self.grammemes.add(("VerbForm", "Inf"))
-            return True
-        return False
+    def _postprocess(self):
+        while len(self.unmatched) > 0:
+            gram = self.unmatched.pop()
+            
+            if gram == 'Name':
+                self.pos = 'PROPN'
+            elif gram in ('VERB', 'INFN'):
+                self.pos = 'VERB'
+                self.grammemes.add(('VerbForm', 'Fin' if gram == 'VERB' else 'Inf'))
 
     def _fill_one_gram_oc(self, gram):
-        if self._try_apply_exceptions(gram):
-            return
-
         for categ, gmap in self.GRAM_MAP.items():
             if gram in gmap:
                 if categ == '_POS':
                     self.pos = gmap[gram]
+                    return
                 else:
                     self.grammemes.add((categ, gmap[gram]))
+                    return
+
+        self.unmatched.add(gram)
 
     def _fill_from_oc(self, oc_tag):
         grams = oc_tag.replace(' ', ',').split(',')
         for g in grams:
             self._fill_one_gram_oc(g)
+        self._postprocess()
 
     def __str__(self):
         grams = '|'.join("{}={}".format(c, v) for c, v in sorted(list(self.grammemes)))
