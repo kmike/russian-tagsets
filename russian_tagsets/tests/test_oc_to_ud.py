@@ -10,9 +10,9 @@ class TestInternalConversion(object):
         ['власть', 'NOUN,inan,femn sing,nomn', 'NOUN Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing'],
         ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf|VerbForm=Inf'],
         ['было', 'VERB,impf,intr neut,sing,past,indc', 'AUX Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"была сделан" (вспм) vs. "была уязвим" (глагол)
-        ['ивана', 'NOUN,anim,masc,Name sing,gent', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing']
-        ['громко', 'ADVB', 'ADV _']
-        ['.', 'PNCT', 'PUNCT punct'],
+        ['ивана', 'NOUN,anim,masc,Name sing,gent', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing'],
+        ['громко', 'ADVB', 'ADV _'],
+        ['.', 'PNCT', 'PUNCT _'],
     ]
 
     @pytest.mark.parametrize(("word", "internal", "ud14"), TEST_DATA)
