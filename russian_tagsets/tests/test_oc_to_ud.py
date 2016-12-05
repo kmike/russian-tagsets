@@ -12,10 +12,10 @@ class TestInternalConversion(object):
         ['.', 'PNCT', 'PNCT punct'],
     ]
 
-    @pytest.mark.parametrize(("word", "internal", "ud"), TEST_DATA)
-    def test_from_internal(self, word, internal, external):
-        converted = converters.convert(internal, 'opencorpora-int', 'ud')
-        assert converted == external
+    @pytest.mark.parametrize(("word", "internal", "ud14"), TEST_DATA)
+    def test_from_internal(self, word, internal, ud14):
+        converted = converters.convert(internal, 'opencorpora-int', 'ud14')
+        assert converted == ud14
 
 
 def _remove_unsupported(ud_tag):
