@@ -43,9 +43,9 @@ class TestInternalConversion(object):
         ['большая', 'ADJF,Qual,femn,sing,nomn', 'ADJ Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing|Variant=Full'],
         ['студенческих', 'ADJF,plur,loct', 'ADJ Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing|Variant=Full'],
         #по инструкции должно быть прил
-        ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'VERB Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass']
+        ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'VERB Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
         #по инструкции должно быть прил
-        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Animacy=Anim|Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act']
+        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Animacy=Anim|Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
         ['неприкосновенны', 'ADJS,plur', 'ADJ Animacy=Inan|Case=Nom|Number=Plur|Variant=Brev'],
         #у нас неправильно
         ['1', 'NUMB', 'ADJ Animacy=Inan|Case=Nom|Gender=Masc|Number=Sing'], #остался 1 км.
