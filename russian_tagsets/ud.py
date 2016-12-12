@@ -16,13 +16,17 @@ class Tag(object):
     GRAM_MAP = {
         '_POS': {
             'ADJF': 'ADJ',
+            'ADJS': 'ADJ',
             'ADVB': 'ADV',
             'INFN': 'VERB',
             'INTJ': 'INTJ',
             'NOUN': 'NOUN',
             'NPRO': 'PRON',
+            'NUMR': 'NUM',
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
+            'PRTF': 'VERB',
+            'PRTS': 'VERB',
             'VERB': 'VERB',
         },
         'Animacy': {
@@ -41,6 +45,9 @@ class Tag(object):
             'loct': 'Loc',
             'nomn': 'Nom',
         },
+        'Degree': {
+            'COMP': 'Comp',
+        },
         'Gender': {
             'femn': 'Fem',
             'masc': 'Masc',
@@ -56,11 +63,23 @@ class Tag(object):
         },
         'Tense': {
             'past': 'Past',
+            'pres': 'Pres',
+        },
+        'Variant': {
+            'ADJF': 'Full',
+            'ADJS': 'Brev',
+            'PRTS': 'Brev',
         },
         'VerbForm': {
             'INFN': 'Inf',
+            'PRTF': 'Part',
+            'PRTS': 'Part',
             'VERB': 'Fin',
         },
+        'Voice': {
+            'actv': 'Act',
+            'pssv': 'Pass',
+        }
     }
 
     def __init__(self, oc_tag):
@@ -73,8 +92,10 @@ class Tag(object):
         while len(self.unmatched) > 0:
             gram = self.unmatched.pop()
             
-            if gram == 'Name':
+            if gram in ('Name', 'Patr', 'Surn'):
                 self.pos = 'PROPN'
+            if gram == 'Auxt':
+                self.pos = 'AUX'
 
     def _fill_one_gram_oc(self, gram):
         match = False

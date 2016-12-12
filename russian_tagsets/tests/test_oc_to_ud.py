@@ -25,7 +25,7 @@ class TestInternalConversion(object):
         ['иванова', 'NOUN,anim,masc,Sgtm,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Masc|Number=Sing'],
         ['гиппиус', 'NOUN,anim,femn,Sgtm,Fixd,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Fem|Number=Sing'],
         #похоже, что мн у фамилий только в мр (нужно проверить)
-        ['ивановы', 'NOUN,anim,GNdr,Ms-f,Pltm,Surn,plur,nomt', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing'],
+        ['ивановы', 'NOUN,anim,GNdr,Ms-f,Pltm,Surn,plur,nomt', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Plur'],
         ['ивановичем', 'NOUN,anim,masc,Patr,sing,ablt', 'PROPN Animacy=Anim|Case=Ins|Gender=Masc|Number=Sing'],
         #если не изменяемая фам по обоим родам, то у нам одна лемма Sgtm, у них видимо две леммы (проверить)
         #странно, что у нам только ед ч
@@ -34,7 +34,7 @@ class TestInternalConversion(object):
         
 
         ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf|VerbForm=Inf'],
-        ['было', 'VERB,impf,intr neut,sing,past,indc', 'AUX Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было сделано" (вспм) vs. "было уязвимо" (глагол)
+        ['было', 'VERB,impf,intr neut,sing,past,indc,Auxt', 'AUX Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было сделано" (вспм) vs. "было уязвимо" (глагол); в OpenCorpora помета на токене
         ['было', 'VERB,impf,intr neut,sing,past,indc', 'VERB Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было дано" (вспм) vs. "в классе было 20 человек" (глагол)
         ['написана', 'PRTS,perf,past,pssv,femn,sing', 'VERB Animacy=Inan|Aspect=Perf|Case=Nom|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
 
