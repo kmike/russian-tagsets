@@ -10,18 +10,23 @@ class TestInternalConversion(object):
         #Noun, Verb, ADJF, ADVB, PRTF, PRTS, NUMB, COMP
         #GNdr, Pltm, Sgtm, Ms-f, Inmx, Name, Surn, Patr, Fixd
         #inan, anim - Noun, anim, inan - ADJF/PRTF
-        #femn, masc, neut; sing plur; nomn, gent, datv, accs, ablt, loct
+        #femn, masc, neut; sing plur; nomn, gent, datv, accs, ablt, loct; voct, loc2, gen2, gen1
         #Anum, Qual,
         #perf, impr; intr, tran; pres, past, !!!; indc, !!!; actv pssv;
         ['власть', 'NOUN,inan,femn sing,nomn', 'NOUN Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing'],
         #непонятно, как они приписали род
-        ['суток', 'NOUN,inan,GNdr,Pltm,plur,gent', 'NOUN Animacy=Inan|Case=Gen|Gender=Fem|Number=Plur'],
+        ['суток', 'NOUN,inan,GNdr,Pltm,plur,gent', 'NOUN Animacy=Inan|Case=Gen|Gender=Fem|Number=Ptan'],
+        ['лесу', 'NOUN,inan,masc,sing,loc2', 'NOUN Animacy=Inan|Case=Loc|Gender=Masc|Number=Sing'],
+        ['боку', 'NOUN,inan,masc,sing,gen2', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
+        ['бока', 'NOUN,inan,masc,sing,gen1', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
+        ['ань', 'NOUN,anim,masc,sing,voct', 'NOUN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing'],
         #МИКРОБ!!! у нас выбираем одуш у леммы, а у формы вин ставим другую одуш - у них видимо две леммы
         ['персонаж', 'NOUN,anim,masc,Inmx,sing,inan,accs', 'NOUN Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing'],
         ['персонажа', 'NOUN,anim,masc,Inmx,sing,accs', 'NOUN Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
         ['персонаж', 'NOUN,anim,masc,Inmx,sing,nomn', 'NOUN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing'],
         ['персонаж', 'NOUN,anim,masc,Inmx,sing,nomn', 'NOUN Animacy=Inan|Case=Nom|Gender=Masc|Number=Sing'],
         ['ивана', 'NOUN,anim,masc,Name sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Masc|Number=Sing'],
+        #непоянтно, какое число должно быть у них у фамилий sing или Coll
         ['иванова', 'NOUN,anim,masc,Sgtm,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Masc|Number=Sing'],
         ['гиппиус', 'NOUN,anim,femn,Sgtm,Fixd,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Fem|Number=Sing'],
         #похоже, что мн у фамилий только в мр (нужно проверить)
@@ -31,7 +36,7 @@ class TestInternalConversion(object):
         #странно, что у нам только ед ч
         ['винчи', 'NOUN,anim,GNdr,Ms-f,Sgtm,Fixd,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Masc|Number=Sing'],
         ['винчи', 'NOUN,anim,GNdr,Ms-f,Sgtm,Fixd,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Fem|Number=Sing'],
-        
+
 
         ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf|VerbForm=Inf'],
         ['было', 'VERB,impf,intr neut,sing,past,indc,Auxt', 'AUX Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было сделано" (вспм) vs. "было уязвимо" (глагол); в OpenCorpora помета на токене
