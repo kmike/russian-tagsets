@@ -19,7 +19,7 @@ class TestInternalConversion(object):
         ['лесу', 'NOUN,inan,masc,sing,loc2', 'NOUN Animacy=Inan|Case=Loc|Gender=Masc|Number=Sing'],
         ['боку', 'NOUN,inan,masc,sing,gen2', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
         ['бока', 'NOUN,inan,masc,sing,gen1', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
-        ['ань', 'NOUN,anim,masc,sing,voct', 'NOUN Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing'],
+        ['ань', 'NOUN,anim,femn,sing,voct', 'NOUN Animacy=Anim|Case=Nom|Gender=Fem|Number=Sing'],
         #МИКРОБ!!! у нас выбираем одуш у леммы, а у формы вин ставим другую одуш - у них видимо две леммы
         ['персонаж', 'NOUN,anim,masc,Inmx,sing,inan,accs', 'NOUN Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing'],
         ['персонажа', 'NOUN,anim,masc,Inmx,sing,accs', 'NOUN Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
@@ -30,7 +30,7 @@ class TestInternalConversion(object):
         ['иванова', 'NOUN,anim,masc,Sgtm,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Masc|Number=Sing'],
         ['гиппиус', 'NOUN,anim,femn,Sgtm,Fixd,Surn,sing,gent', 'PROPN Animacy=Anim|Case=Gen|Gender=Fem|Number=Sing'],
         #похоже, что мн у фамилий только в мр (нужно проверить)
-        ['ивановы', 'NOUN,anim,GNdr,Ms-f,Pltm,Surn,plur,nomt', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Plur'],
+        ['ивановы', 'NOUN,anim,GNdr,Ms-f,Pltm,Surn,plur,nomn', 'PROPN Animacy=Anim|Case=Nom|Gender=Masc|Number=Plur'],
         ['ивановичем', 'NOUN,anim,masc,Patr,sing,ablt', 'PROPN Animacy=Anim|Case=Ins|Gender=Masc|Number=Sing'],
         #если не изменяемая фам по обоим родам, то у нам одна лемма Sgtm, у них видимо две леммы (проверить)
         #странно, что у нам только ед ч
@@ -41,24 +41,23 @@ class TestInternalConversion(object):
         ['поменяться', 'INFN,perf,intr', 'VERB Aspect=Perf|VerbForm=Inf'],
         ['было', 'VERB,impf,intr neut,sing,past,indc,Auxt', 'AUX Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было сделано" (вспм) vs. "было уязвимо" (глагол); в OpenCorpora помета на токене
         ['было', 'VERB,impf,intr neut,sing,past,indc', 'VERB Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin'], #"было дано" (вспм) vs. "в классе было 20 человек" (глагол)
-        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'VERB Animacy=Inan|Aspect=Perf|Case=Nom|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
+        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'VERB Aspect=Perf|Case=Nom|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
 
-        ['первом', 'ADJF,Anum,masc,sing,loct', 'ADJ Animacy=Inan|Case=Loc|Gender=Masc|Number=Sing'],
+        ['первом', 'ADJF,Anum,masc,sing,loct', 'ADJ Case=Loc|Gender=Masc|Number=Sing'],
         ['первого', 'ADJF,Anum,anim,masc,sing,accs', 'ADJ Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
-        ['большая', 'ADJF,Qual,femn,sing,nomn', 'ADJ Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing|Variant=Full'],
-        ['студенческих', 'ADJF,plur,loct', 'ADJ Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing|Variant=Full'],
+        ['большая', 'ADJF,Qual,femn,sing,nomn', 'ADJ Case=Nom|Gender=Fem|Number=Sing'],
+        ['студенческих', 'ADJF,plur,loct', 'ADJ Case=Loc|Gender=Fem|Number=Plur'],
         #по инструкции должно быть прил
         ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'VERB Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
         #по инструкции должно быть прил
-        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Animacy=Anim|Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
-        ['неприкосновенны', 'ADJS,plur', 'ADJ Animacy=Inan|Case=Nom|Number=Plur|Variant=Brev'],
+        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
+        ['неприкосновенны', 'ADJS,plur', 'ADJ Case=Nom|Number=Plur|Variant=Brev'],
         #у нас неправильно
-        ['1', 'NUMB', 'ADJ Animacy=Inan|Case=Nom|Gender=Masc|Number=Sing'], #остался 1 км.
+        ['1', 'NUMB', 'ADJ Animacy=Inan|Case=Nom|Gender=Neut|Number=Sing'], # 1 декабря
         ['выше', 'COMP', 'ADJ Degree=Cmp'], #он выше меня vs подняться выше
         ['выше', 'COMP', 'ADV Degree=Cmp'],
 
-        #у нас у числ одуш только в вин падеже, у них непонятно когда
-        ['двум', 'NUMR,femn,datv', 'NUM Animacy=Inan|Case=Dat|Gender=Fem'],
+        ['двум', 'NUMR,femn,datv', 'NUM Case=Dat|Gender=Fem'],
         ['пяти', 'NUMR,loct', 'NUM Case=Loc'],
         ['три', 'NUMR,inan,accs', 'NUM Animacy=Inan|Case=Acc'],
 

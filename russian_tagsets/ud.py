@@ -40,10 +40,16 @@ class Tag(object):
         'Case': {
             'ablt': 'Ins',
             'accs': 'Acc',
+            'ADJS': 'Nom',
             'datv': 'Dat',
+            'gen1': 'Gen',
+            'gen2': 'Gen',
             'gent': 'Gen',
+            'loc2': 'Loc',
             'loct': 'Loc',
             'nomn': 'Nom',
+            'PRTS': 'Nom',
+            'voct': 'Nom',
         },
         'Degree': {
             'COMP': 'Comp',
@@ -66,7 +72,6 @@ class Tag(object):
             'pres': 'Pres',
         },
         'Variant': {
-            'ADJF': 'Full',
             'ADJS': 'Brev',
             'PRTS': 'Brev',
         },
