@@ -18,13 +18,18 @@ class Tag(object):
             'ADJF': 'ADJ',
             'ADJS': 'ADJ',
             'ADVB': 'ADV',
+            'Apro': 'DET',
+            'CONJ': 'CONJ',
+            'GRND': 'VERB',
             'INFN': 'VERB',
             'INTJ': 'INTJ',
             'NOUN': 'NOUN',
             'NPRO': 'PRON',
             'NUMR': 'NUM',
+            'PART': 'PRCL',
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
+            'PREP': 'ADP',
             'PRTF': 'VERB',
             'PRTS': 'VERB',
             'VERB': 'VERB',
@@ -52,7 +57,8 @@ class Tag(object):
             'voct': 'Nom',
         },
         'Degree': {
-            'COMP': 'Comp',
+            'COMP': 'Cmp',
+            'Supr': 'Sup',
         },
         'Gender': {
             'femn': 'Fem',
@@ -67,7 +73,15 @@ class Tag(object):
             'plur': 'Plur',
             'sing': 'Sing',
         },
+        'Person': {
+            '1per': '1',
+            '2per': '2',
+            '3per': '3',
+            'excl': '2',
+            'incl': '1',
+        },
         'Tense': {
+            'futr': 'Fut',
             'past': 'Past',
             'pres': 'Pres',
         },
@@ -76,6 +90,7 @@ class Tag(object):
             'PRTS': 'Brev',
         },
         'VerbForm': {
+            'GRND': 'Trans',
             'INFN': 'Inf',
             'PRTF': 'Part',
             'PRTS': 'Part',
@@ -97,7 +112,7 @@ class Tag(object):
         while len(self.unmatched) > 0:
             gram = self.unmatched.pop()
             
-            if gram in ('Name', 'Patr', 'Surn'):
+            if gram in ('Name', 'Patr', 'Surn', 'Geox', 'Orgn'):
                 self.pos = 'PROPN'
             elif gram == 'Auxt':
                 self.pos = 'AUX'
