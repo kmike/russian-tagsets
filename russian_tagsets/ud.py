@@ -99,8 +99,11 @@ class Tag(object):
             
             if gram in ('Name', 'Patr', 'Surn'):
                 self.pos = 'PROPN'
-            if gram == 'Auxt':
+            elif gram == 'Auxt':
                 self.pos = 'AUX'
+            elif gram == 'Pltm':
+                self.grammemes.remove(('Number', 'Plur'))
+                self.grammemes.add(('Number', 'Ptan'))
 
     def _fill_one_gram_oc(self, gram):
         match = False

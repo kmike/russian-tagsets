@@ -14,8 +14,8 @@ class TestInternalConversion(object):
         #Anum, Qual,
         #perf, impr; intr, tran; pres, past, !!!; indc, !!!; actv pssv;
         ['власть', 'NOUN,inan,femn sing,nomn', 'NOUN Animacy=Inan|Case=Nom|Gender=Fem|Number=Sing'],
-        #непонятно, как они приписали род
-        ['суток', 'NOUN,inan,GNdr,Pltm,plur,gent', 'NOUN Animacy=Inan|Case=Gen|Gender=Fem|Number=Ptan'],
+        # в UD род у Pltm проставлен, но в рамках соревнования не просим его определять (то же про мн.ч прил)
+        ['суток', 'NOUN,inan,GNdr,Pltm,plur,gent', 'NOUN Animacy=Inan|Case=Gen|Number=Ptan'],
         ['лесу', 'NOUN,inan,masc,sing,loc2', 'NOUN Animacy=Inan|Case=Loc|Gender=Masc|Number=Sing'],
         ['боку', 'NOUN,inan,masc,sing,gen2', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
         ['бока', 'NOUN,inan,masc,sing,gen1', 'NOUN Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing'],
@@ -46,12 +46,13 @@ class TestInternalConversion(object):
         ['первом', 'ADJF,Anum,masc,sing,loct', 'ADJ Case=Loc|Gender=Masc|Number=Sing'],
         ['первого', 'ADJF,Anum,anim,masc,sing,accs', 'ADJ Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
         ['большая', 'ADJF,Qual,femn,sing,nomn', 'ADJ Case=Nom|Gender=Fem|Number=Sing'],
-        ['студенческих', 'ADJF,plur,loct', 'ADJ Case=Loc|Gender=Fem|Number=Plur'],
+        ['студенческих', 'ADJF,plur,loct', 'ADJ Case=Loc|Number=Plur'],
         #по инструкции должно быть прил
         ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'VERB Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
         #по инструкции должно быть прил
         ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
         ['неприкосновенны', 'ADJS,plur', 'ADJ Case=Nom|Number=Plur|Variant=Brev'],
+        ['бела', 'ADJS,sing,masc,gent', 'ADJ Case=Gen|Gender=Masc|Number=Sing|Variant=Brev'],
         #у нас неправильно
         ['1', 'NUMB', 'ADJ Animacy=Inan|Case=Nom|Gender=Neut|Number=Sing'], # 1 декабря
         ['выше', 'COMP', 'ADJ Degree=Cmp'], #он выше меня vs подняться выше
