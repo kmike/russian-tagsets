@@ -89,7 +89,7 @@ class Tag(object):
 
     def __init__(self, oc_tag):
         self.pos = 'X'
-        self.grammemes = set()
+        self.grammemes = dict()
         self.unmatched = set()
         self._fill_from_oc(oc_tag)
 
@@ -102,18 +102,17 @@ class Tag(object):
             elif gram == 'Auxt':
                 self.pos = 'AUX'
             elif gram == 'Pltm':
-                self.grammemes.remove(('Number', 'Plur'))
-                self.grammemes.add(('Number', 'Ptan'))
+                self.grammemes['Number'] = 'Ptan'
 
     def _fill_one_gram_oc(self, gram):
         match = False
-        for categ, gmap in self.GRAM_MAP.items():
+        for categ, gmap in sorted(self.GRAM_MAP.items()):
             if gram in gmap:
                 if categ == '_POS':
                     self.pos = gmap[gram]
                     match = True
                 else:
-                    self.grammemes.add((categ, gmap[gram]))
+                    self.grammemes[categ] = gmap[gram]
                     match = True
 
         if not match:
@@ -126,7 +125,7 @@ class Tag(object):
         self._postprocess()
 
     def __str__(self):
-        grams = '|'.join("{}={}".format(c, v) for c, v in sorted(list(self.grammemes)))
+        grams = '|'.join("{}={}".format(c, v) for c, v in sorted(self.grammemes.items()))
         return "{} {}".format(self.pos, grams if grams else '_')
 
 
