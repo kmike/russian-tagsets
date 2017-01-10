@@ -25,9 +25,9 @@ class TransformTest(unittest.TestCase):
 
     def test_transform(self):
         reg = converters.Registry()
-        reg.add('lower', 'upper', lambda s: s.upper())
-        reg.add('upper', 'none', lambda s: None)
-        reg.add('upper', 'lower', lambda s: s.lower() if s.isupper() else 'Error')
+        reg.add('lower', 'upper', lambda s, _: s.upper())
+        reg.add('upper', 'none', lambda s, _: None)
+        reg.add('upper', 'lower', lambda s, _: s.lower() if s.isupper() else 'Error')
 
         self.assertEqual(reg.convert('foo', 'lower', 'upper'), 'FOO')
         self.assertEqual(reg.convert('foo', 'lower', 'lower'), 'foo')

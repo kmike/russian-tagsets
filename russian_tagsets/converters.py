@@ -40,12 +40,12 @@ class Registry(object):
         for from_, to_ in bigrams(self.path(type_from, type_to)):
             yield self._registry[from_][to_]
 
-    def convert(self, obj, type_from, type_to):
+    def convert(self, obj, type_from, type_to, word=None):
         """
         Convert object from ``type_from`` to ``type_to``.
         """
         for func in self.steps(type_from, type_to):
-            obj = func(obj)
+            obj = func(obj, word)
         return obj
 
     def get_supported(self):
@@ -79,10 +79,10 @@ def steps(type_from, type_to):
     """
     return _registry.steps(type_from, type_to)
 
-def convert(obj, type_from, type_to):
-    """ Convert object from ``type_from`` to ``type_to``. """
+def convert(obj, type_from, type_to, word=None):
+    """ Convert object from ``type_from`` to ``type_to`` optionally using ``word`` """
     for func in steps(type_from, type_to):
-        obj = func(obj)
+        obj = func(obj, word)
     return obj
 
 def get_supported():
@@ -91,10 +91,10 @@ def get_supported():
 
 def converter(type_from, type_to):
     """ Return conversion function. """
-    def conversion_func(tag):
-        return convert(tag, type_from, type_to)
+    def conversion_func(tag, word=None):
+        return convert(tag, type_from, type_to, word)
 
     conversion_func.__doc__ = """
-    Converts ``tag`` from '%s' to '%s'.
+    Converts ``tag`` with optional ``word`` from '%s' to '%s'.
     """ % (type_from, type_to)
     return conversion_func

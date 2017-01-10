@@ -20,9 +20,10 @@ russian-tagsets
 
 * `OpenCorpora`_ (в.т.ч. русские словари pymorphy2_);
 * `aot.ru`_ (в.т.ч. pymorphy_ 0.5.6);
-* `Диалог-2010`_
+* `Диалог-2010`_;
 * `A Positional Tagset for Russian`_ (Jirka Hana and Anna Feldman, 2010);
 * `НКРЯ`_;
+* `Universal Dependencies`_ (v1.4);
 
 .. _OpenCorpora: http://opencorpora.org/dict.php?act=gram
 .. _aot.ru: http://aot.ru/docs/rusmorph.html
@@ -31,6 +32,7 @@ russian-tagsets
 .. _Диалог-2010: http://ru-eval.ru/
 .. _A Positional Tagset for Russian: http://ufal.mff.cuni.cz/~hana/morph/rutags.html
 .. _НКРЯ: http://www.ruscorpora.ru/corpora-morph.html
+.. _Universal Dependencies: http://universaldependencies.org/ru/pos/all.html
 
 Идея такая: для каждого формата в библиотеке определяется
 несколько функций, которые преобразуют тег в другие форматы;
@@ -68,7 +70,8 @@ pip install russian-tagsets
      (u'aot', u'dialog2010'),
      (u'dialog2010', u'aot'),
      (u'opencorpora-int', u'ruscorpora'),
-     (u'opencorpora-int', u'opencorpora-ext')]
+     (u'opencorpora-int', u'opencorpora-ext'),
+     (u'opencorpora-int', u'ud14')]
 
 "Ручной" режим (быстрее, преобразование только напрямую)::
 
