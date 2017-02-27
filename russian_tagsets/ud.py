@@ -8,10 +8,11 @@ TODO
 """
 
 from __future__ import absolute_import, unicode_literals
+from copy import deepcopy
 from russian_tagsets import converters
 from russian_tagsets.utils import invert_mapping
 
-class Tag(object):
+class Tag14(object):
 
     GRAM_MAP = {
         '_POS': {
@@ -111,7 +112,7 @@ class Tag(object):
     def _postprocess(self):
         while len(self.unmatched) > 0:
             gram = self.unmatched.pop()
-            
+
             if gram in ('Name', 'Patr', 'Surn', 'Geox', 'Orgn'):
                 self.pos = 'PROPN'
             elif gram == 'Auxt':
@@ -144,8 +145,24 @@ class Tag(object):
         return "{} {}".format(self.pos, grams if grams else '_')
 
 
+class Tag20(Tag14):
+
+    GRAM_MAP = deepcopy(Tag14.GRAM_MAP)
+    # http://universaldependencies.org/v2/postags.html
+    GRAM_MAP['_POS']['CONJ'] = 'CCONJ'
+    # http://universaldependencies.org/v2/features.html
+    GRAM_MAP['VerbForm']['GRND'] = 'Conv'
+    GRAM_MAP['Abbr'] = {'Abbr': 'Yes'}
+
+
 def to_ud14(oc_tag, word=None):
-    tag = Tag(oc_tag)
+    tag = Tag14(oc_tag)
+    return str(tag)
+
+
+def to_ud20(oc_tag, word=None):
+    tag = Tag20(oc_tag)
     return str(tag)
 
 converters.add('opencorpora-int', 'ud14', to_ud14)
+converters.add('opencorpora-int', 'ud20', to_ud20)
