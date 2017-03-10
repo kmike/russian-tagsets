@@ -31,8 +31,8 @@ class Tag14(object):
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
             'PREP': 'ADP',
-            'PRTF': 'VERB',
-            'PRTS': 'VERB',
+            'PRTF': 'ADJ',
+            'PRTS': 'ADJ',
             'VERB': 'VERB',
         },
         'Animacy': {
