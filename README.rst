@@ -23,7 +23,7 @@ russian-tagsets
 * `Диалог-2010`_;
 * `A Positional Tagset for Russian`_ (Jirka Hana and Anna Feldman, 2010);
 * `НКРЯ`_;
-* `Universal Dependencies`_ (v1.4);
+* `Universal Dependencies`_ (v1.4, v2.0);
 
 .. _OpenCorpora: http://opencorpora.org/dict.php?act=gram
 .. _aot.ru: http://aot.ru/docs/rusmorph.html
