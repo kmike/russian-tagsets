@@ -7,3 +7,5 @@ MANIFEST
 ipynb$
 ^dist
 build/
+.cache
+russian_tagsets.egg-info/*
