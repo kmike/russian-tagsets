@@ -73,6 +73,9 @@ class Tag14(object):
             'plur': 'Plur',
             'sing': 'Sing',
         },
+        'NumForm': {
+            'NUMB': 'Digit',
+        },
         'Person': {
             '1per': '1',
             '2per': '2',

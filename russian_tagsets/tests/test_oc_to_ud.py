@@ -73,7 +73,7 @@ class TestInternalConversion(object):
         ['мой', 'ADJF,Apro,sing,masc,nomn', 'DET Case=Nom|Gender=Masc|Number=Sing'],
 
         #['2', 'NUMB', 'NUM Case=Nom|Gender=Masc'], # два мальчика
-        ['2', 'NUMB,intg', 'NUM _'],  # pymorphy2 result
+        ['2', 'NUMB,intg', 'NUM NumForm=Digit'],  # pymorphy2 result
         ['двум', 'NUMR,femn,datv', 'NUM Case=Dat|Gender=Fem'],
         ['пяти', 'NUMR,loct', 'NUM Case=Loc'],
         ['три', 'NUMR,inan,accs', 'NUM Animacy=Inan|Case=Acc'],
