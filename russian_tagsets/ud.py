@@ -27,6 +27,7 @@ class Tag14(object):
             'NOUN': 'NOUN',
             'NPRO': 'PRON',
             'NUMR': 'NUM',
+            'NUMB': 'NUM',
             'PART': 'PRCL',
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
