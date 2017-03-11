@@ -32,8 +32,8 @@ class Tag14(object):
             'PNCT': 'PUNCT',
             'PRCL': 'PART',
             'PREP': 'ADP',
-            'PRTF': 'ADJ',
-            'PRTS': 'ADJ',
+            'PRTF': 'VERB',
+            'PRTS': 'VERB',
             'VERB': 'VERB',
         },
         'Animacy': {
@@ -145,13 +145,21 @@ class Tag14(object):
 
 
 class Tag20(Tag14):
-
     GRAM_MAP = deepcopy(Tag14.GRAM_MAP)
     # http://universaldependencies.org/v2/postags.html
     GRAM_MAP['_POS']['CONJ'] = 'CCONJ'
     # http://universaldependencies.org/v2/features.html
     GRAM_MAP['VerbForm']['GRND'] = 'Conv'
     GRAM_MAP['Abbr'] = {'Abbr': 'Yes'}
+
+
+class TagDialog2017(Tag14):
+    # see https://github.com/dialogue-evaluation/morphoRuEval-2017/blob/master/morphostandard
+    GRAM_MAP = deepcopy(Tag14.GRAM_MAP)
+    GRAM_MAP['_POS']['PRTF'] = 'ADJ'
+    GRAM_MAP['_POS']['PRTS'] = 'ADJ'
+    GRAM_MAP['Tense']['futr'] = 'Notpast'
+    GRAM_MAP['Tense']['pres'] = 'Notpast'
 
 
 def to_ud14(oc_tag, word=None):
@@ -163,5 +171,12 @@ def to_ud20(oc_tag, word=None):
     tag = Tag20(oc_tag)
     return str(tag)
 
+
+def to_dialog2017(oc_tag, word=None):
+    tag = TagDialog2017(oc_tag)
+    return str(tag)
+
+
 converters.add('opencorpora-int', 'ud14', to_ud14)
 converters.add('opencorpora-int', 'ud20', to_ud20)
+converters.add('opencorpora-int', 'dialog2017', to_dialog2017)

@@ -52,10 +52,10 @@ class TestInternalConversion(object):
         #['пройдемте', 'VERB,perf,intr,plur,impr,incl', 'VERB Aspect=Imp|Mood=Imp|Number=Plur|Person=1|VerbForm=Fin|Voice=Act'],
         #['отражая', 'GRND,impf,tran,pres', 'VERB Aspect=Imp|Tense=Pres|VerbForm=Trans|Voice=Act'],
         #['выстрадав', 'GRND,perf,tran,past', 'VERB Aspect=Perf|Tense=Past|VerbForm=Trans|Voice=Act'],
-        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'ADJ Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
+        ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'VERB Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
         #по инструкции должно быть прил
-        ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'ADJ Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
-        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'ADJ Aspect=Perf|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
+        ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'VERB Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
+        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'VERB Aspect=Perf|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
 
         ['первом', 'ADJF,Anum,masc,sing,loct', 'ADJ Case=Loc|Gender=Masc|Number=Sing'],
         ['первого', 'ADJF,Anum,anim,masc,sing,accs', 'ADJ Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
