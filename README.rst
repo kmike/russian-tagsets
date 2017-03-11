@@ -23,7 +23,7 @@ russian-tagsets
 * `Диалог-2010`_;
 * `A Positional Tagset for Russian`_ (Jirka Hana and Anna Feldman, 2010);
 * `НКРЯ`_;
-* `Universal Dependencies`_ (v1.4, v2.0);
+* `Universal Dependencies`_ (v1.4, v2.0, Dialog-2017_);
 
 .. _OpenCorpora: http://opencorpora.org/dict.php?act=gram
 .. _aot.ru: http://aot.ru/docs/rusmorph.html
@@ -33,6 +33,7 @@ russian-tagsets
 .. _A Positional Tagset for Russian: http://ufal.mff.cuni.cz/~hana/morph/rutags.html
 .. _НКРЯ: http://www.ruscorpora.ru/corpora-morph.html
 .. _Universal Dependencies: http://universaldependencies.org/ru/pos/all.html
+.. _Dialog-2017: http://www.dialog-21.ru/evaluation/2017/morphorueval/
 
 Идея такая: для каждого формата в библиотеке определяется
 несколько функций, которые преобразуют тег в другие форматы;
