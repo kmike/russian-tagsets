@@ -6,11 +6,11 @@ Conversion between inner OpenCorpora format and Universal Dependencies 1.4
 Known issues:
 TODO
 """
-
 from __future__ import absolute_import, unicode_literals
 from copy import deepcopy
+
 from russian_tagsets import converters
-from russian_tagsets.utils import invert_mapping
+
 
 class Tag14(object):
 
@@ -156,15 +156,6 @@ class Tag20(Tag14):
     GRAM_MAP['Abbr'] = {'Abbr': 'Yes'}
 
 
-class TagDialog2017(Tag14):
-    # see https://github.com/dialogue-evaluation/morphoRuEval-2017/blob/master/morphostandard
-    GRAM_MAP = deepcopy(Tag14.GRAM_MAP)
-    GRAM_MAP['_POS']['PRTF'] = 'ADJ'
-    GRAM_MAP['_POS']['PRTS'] = 'ADJ'
-    GRAM_MAP['Tense']['futr'] = 'Notpast'
-    GRAM_MAP['Tense']['pres'] = 'Notpast'
-
-
 def to_ud14(oc_tag, word=None):
     tag = Tag14(oc_tag)
     return str(tag)
@@ -174,12 +165,5 @@ def to_ud20(oc_tag, word=None):
     tag = Tag20(oc_tag)
     return str(tag)
 
-
-def to_dialog2017(oc_tag, word=None):
-    tag = TagDialog2017(oc_tag)
-    return str(tag)
-
-
 converters.add('opencorpora-int', 'ud14', to_ud14)
 converters.add('opencorpora-int', 'ud20', to_ud20)
-converters.add('opencorpora-int', 'dialog2017', to_dialog2017)
