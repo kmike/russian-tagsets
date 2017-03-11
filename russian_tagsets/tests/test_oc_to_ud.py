@@ -55,7 +55,7 @@ class TestInternalConversion(object):
         ['голодающими', 'PRTF,impf,intr,pres,actv,plur,ablt', 'ADJ Aspect=Imp|Case=Ins|Number=Plur|Tense=Pres|VerbForm=Part|Voice=Act'],
         #по инструкции должно быть прил
         ['сделанный', 'PRTF,perf,tran,past,pssv,inan,masc,sing,accs', 'ADJ Animacy=Inan|Aspect=Perf|Case=Acc|Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part|Voice=Pass'],
-        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'ADJ Aspect=Perf|Case=Nom|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
+        ['написана', 'PRTS,perf,past,pssv,femn,sing', 'ADJ Aspect=Perf|Gender=Fem|Number=Sing|Tense=Past|Variant=Brev|VerbForm=Part|Voice=Pass'],
 
         ['первом', 'ADJF,Anum,masc,sing,loct', 'ADJ Case=Loc|Gender=Masc|Number=Sing'],
         ['первого', 'ADJF,Anum,anim,masc,sing,accs', 'ADJ Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing'],
@@ -63,7 +63,7 @@ class TestInternalConversion(object):
         ['студенческих', 'ADJF,plur,loct', 'ADJ Case=Loc|Number=Plur'],
         ['лучшим', 'ADJF,Supr,Qual,masc,sing,ablt', 'ADJ Case=Ins|Degree=Sup|Gender=Masc|Number=Sing'],
         #по инструкции должно быть прил
-        ['неприкосновенны', 'ADJS,plur', 'ADJ Case=Nom|Number=Plur|Variant=Brev'],
+        ['неприкосновенны', 'ADJS,plur', 'ADJ Number=Plur|Variant=Brev'],
         ['бела', 'ADJS,sing,masc,gent', 'ADJ Case=Gen|Gender=Masc|Number=Sing|Variant=Brev'],
         #у нас неправильно
         #['1', 'NUMB', 'ADJ Animacy=Inan|Case=Nom|Gender=Neut|Number=Sing'], # 1 декабря

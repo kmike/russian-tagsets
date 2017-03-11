@@ -47,7 +47,6 @@ class Tag14(object):
         'Case': {
             'ablt': 'Ins',
             'accs': 'Acc',
-            'ADJS': 'Nom',
             'datv': 'Dat',
             'gen1': 'Gen',
             'gen2': 'Gen',
@@ -55,7 +54,6 @@ class Tag14(object):
             'loc2': 'Loc',
             'loct': 'Loc',
             'nomn': 'Nom',
-            'PRTS': 'Nom',
             'voct': 'Nom',
         },
         'Degree': {
