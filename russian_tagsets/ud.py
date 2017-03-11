@@ -20,6 +20,8 @@ class Tag14(object):
             'ADJS': 'ADJ',
             'ADVB': 'ADV',
             'Apro': 'DET',
+            'COMP': 'ADV',  # FIXME: it can be ADJ as well, not enough info
+                            # in OpenCorpora tag
             'CONJ': 'CONJ',
             'GRND': 'VERB',
             'INFN': 'VERB',
@@ -164,6 +166,7 @@ def to_ud14(oc_tag, word=None):
 def to_ud20(oc_tag, word=None):
     tag = Tag20(oc_tag)
     return str(tag)
+
 
 converters.add('opencorpora-int', 'ud14', to_ud14)
 converters.add('opencorpora-int', 'ud20', to_ud20)

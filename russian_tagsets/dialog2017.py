@@ -18,6 +18,7 @@ class TagDialog2017(Tag14):
     GRAM_MAP = deepcopy(Tag14.GRAM_MAP)
     GRAM_MAP['_POS']['PRTF'] = 'ADJ'
     GRAM_MAP['_POS']['PRTS'] = 'ADJ'
+    GRAM_MAP['_POS']['PRED'] = 'ADJ'
     GRAM_MAP['Tense']['futr'] = 'Notpast'
     GRAM_MAP['Tense']['pres'] = 'Notpast'
     GRAM_MAP['Degree']['Supr'] = 'Pos'
@@ -38,10 +39,17 @@ def from_opencorpora(oc_tag, word=None):
         if word == "более" and 'Degree' not in tag.grammemes:
             tag.grammemes['Degree'] = 'Сmp'
 
-        if word == 'нет':
-            return "VERB Mood=Ind|Number=Sing|Person=3|Tense=Notpast|VerbForm=Fin"
+        if word in HARDCODED_PARSES:
+            return HARDCODED_PARSES[word]
 
     return str(tag)
+
+
+HARDCODED_PARSES = {
+    'нет': 'VERB Mood=Ind|Number=Sing|Person=3|Tense=Notpast|VerbForm=Fin',
+    'можно': 'ADJ Degree=Pos|Gender=Neut|Number=Sing|Variant=Brev',
+    'надо': 'ADJ Degree=Pos|Gender=Neut|Number=Sing|Variant=Brev',
+}
 
 
 # XXX: this list is currently unused.
