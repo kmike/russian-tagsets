@@ -5,14 +5,11 @@ __version__ = '0.5.2'
 
 "Используем utf-8"
 
-r1 = open('README.rst', encoding='utf8').read()
-r2 = open('CHANGES.rst', encoding='utf8').read()
-
 setup(
     name="russian-tagsets",
     version=__version__,
     description="Russian tagset converters library",
-    long_description = r1 + "\n\n" + r2,
+    long_description = open('README.rst', encoding='utf-8').read() + "\n\n" + open('CHANGES.rst', encoding='utf-8').read(),
     license = 'MIT license',
     author='Mikhail Korobov',
     author_email='kmike84@gmail.com',
