@@ -3,12 +3,12 @@ russian-tagsets
 ===============
 
 .. image:: https://img.shields.io/pypi/v/russian-tagsets.svg
-    :target: https://pypi.python.org/pypi/russian-tagsets
+   :target: https://pypi.python.org/pypi/russian-tagsets
 
 .. image:: https://img.shields.io/pypi/l/russian-tagsets.svg
 
 .. image:: https://img.shields.io/travis/kmike/russian-tagsets.svg
-    :target: https://travis-ci.org/kmike/russian-tagsets
+   :target: https://travis-ci.org/kmike/russian-tagsets
 
 
 ``russian-tagsets`` - библиотека для преобразования между
