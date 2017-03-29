@@ -1,16 +1,11 @@
 #! /usr/bin/env python
-import platform
+import sys
 from distutils.core import setup
 
-try:
-    import __pypy__
-except ImportError:
-    __pypy__ = None
-
 __version__ = '0.5.2'
-py2 = int(platform.python_version_tuple()[0]) == 2
+PY2 = sys.version_info[0] == 2
 
-if __pypy__ or py2:
+if PY2:
     ld1 = open('README.rst').read()
     ld2 = open('CHANGES.rst').read()
 else:
