@@ -3,6 +3,8 @@ from distutils.core import setup
 
 __version__ = '0.5.2'
 
+"Используем utf-8"
+
 setup(
     name="russian-tagsets",
     version=__version__,
