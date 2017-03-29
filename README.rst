@@ -6,10 +6,10 @@ russian-tagsets
    :target: https://pypi.python.org/pypi/russian-tagsets
 
 .. image:: https://img.shields.io/pypi/l/russian-tagsets.svg
+   :target: https://github.com/kmike/russian-tagsets/blob/master/LICENSE
 
 .. image:: https://img.shields.io/travis/kmike/russian-tagsets.svg
    :target: https://travis-ci.org/kmike/russian-tagsets
-
 
 ``russian-tagsets`` - библиотека для преобразования между
 различными форматами обозначения грамматической информации
