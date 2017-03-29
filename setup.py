@@ -1,13 +1,22 @@
 #! /usr/bin/env python
+import sys
 from distutils.core import setup
 
 __version__ = '0.5.2'
+PY2 = sys.version_info[0] == 2
+
+if PY2:
+    ld1 = open('README.rst').read()
+    ld2 = open('CHANGES.rst').read()
+else:
+    ld1 = open('README.rst', encoding='utf-8').read()
+    ld2 = open('CHANGES.rst', encoding='utf-8').read()
 
 setup(
     name="russian-tagsets",
     version=__version__,
     description="Russian tagset converters library",
-    long_description = open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
+    long_description = ld1 + "\n\n" + ld2,
     license = 'MIT license',
     author='Mikhail Korobov',
     author_email='kmike84@gmail.com',
