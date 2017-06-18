@@ -64,15 +64,17 @@ pip install russian-tagsets
 Поддерживаемые напрямую форматы::
 
     >>> converters.get_supported()
-    [(u'positional', u'aot'),
-     (u'opencorpora-ext', u'opencorpora-int'),
-     (u'opencorpora-ext', u'aot'),
-     (u'aot', u'positional'),
-     (u'aot', u'dialog2010'),
-     (u'dialog2010', u'aot'),
-     (u'opencorpora-int', u'ruscorpora'),
-     (u'opencorpora-int', u'opencorpora-ext'),
-     (u'opencorpora-int', u'ud14')]
+    [('positional', 'aot'),
+     ('aot', 'positional'),
+     ('aot', 'dialog2010'),
+     ('dialog2010', 'aot'),
+     ('opencorpora-int', 'opencorpora-ext'),
+     ('opencorpora-int', 'ruscorpora'),
+     ('opencorpora-int', 'ud14'),
+     ('opencorpora-int', 'ud20'),
+     ('opencorpora-int', 'dialog2017'),
+     ('opencorpora-ext', 'opencorpora-int'),
+     ('opencorpora-ext', 'aot')]
 
 "Ручной" режим (быстрее, преобразование только напрямую)::
 
