@@ -16,12 +16,12 @@ setup(
     name="russian-tagsets",
     version=__version__,
     description="Russian tagset converters library",
-    long_description = ld1 + "\n\n" + ld2,
-    license = 'MIT license',
+    long_description=ld1 + "\n\n" + ld2,
+    license='MIT license',
     author='Mikhail Korobov',
     author_email='kmike84@gmail.com',
 
-    url = 'https://github.com/kmike/russian-tagsets/',
+    url='https://github.com/kmike/russian-tagsets/',
 
     packages = ['russian_tagsets', 'russian_tagsets.positional'],
 
@@ -35,9 +35,9 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Text Processing :: Linguistic',
