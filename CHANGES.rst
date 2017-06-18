@@ -1,6 +1,16 @@
 Changes
 =======
 
+0.6 (2017-06-18)
+----------------
+
+- OpenCorpora -> Universal Dependencies conversion support (UD 1.4, UD 2.0,
+  Dialog 2017 tagset).
+- ``convert`` function accepts optional ``word`` argument - conversion rules
+  may now depend on a word itself, not only on its tag;
+- Python 3.2, 3.3 and 2.6 support is dropped;
+- packaging improvements.
+
 0.5.2 (2014-08-19)
 ------------------
 
