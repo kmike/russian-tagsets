@@ -2,10 +2,11 @@
 *.pyc
 __pycache__
 MANIFEST
-^\.coverage$
 ^MANIFEST$
 ipynb$
-^dist
 build/
 .cache
 russian_tagsets.egg-info/*
+_stuff/
+dist/
+MANIFEST
