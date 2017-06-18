@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 import sys
-from distutils.core import setup
+from setuptools import setup
 
 __version__ = '0.5.2'
 PY2 = sys.version_info[0] == 2
@@ -20,11 +20,8 @@ setup(
     license='MIT license',
     author='Mikhail Korobov',
     author_email='kmike84@gmail.com',
-
     url='https://github.com/kmike/russian-tagsets/',
-
-    packages = ['russian_tagsets', 'russian_tagsets.positional'],
-
+    packages=['russian_tagsets', 'russian_tagsets.positional'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
