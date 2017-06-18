@@ -47,8 +47,6 @@ def from_opencorpora(oc_tag, word=None):
 
 HARDCODED_PARSES = {
     'нет': 'VERB Mood=Ind|Number=Sing|Person=3|Tense=Notpast|VerbForm=Fin',
-    'можно': 'ADJ Degree=Pos|Gender=Neut|Number=Sing|Variant=Brev',
-    'надо': 'ADJ Degree=Pos|Gender=Neut|Number=Sing|Variant=Brev',
 }
 
 
